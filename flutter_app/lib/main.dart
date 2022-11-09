@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'dashboard_page.dart';
 
+//test
+
 void main() {
   setupWindow();
   runApp(
@@ -64,14 +66,11 @@ class HomePage extends StatelessWidget {
             ),
             title: const Text('Hopeland Systems Test App'),
           ),
-          /*
           body: const TabBarView(
             children: [
               DashboardPage(),
-              
             ],
           ),
-          */
         ),
       ),
     );
