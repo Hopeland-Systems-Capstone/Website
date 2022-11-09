@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 
 import 'dashboard_page.dart';
 
-//test
-
 void main() {
   setupWindow();
   runApp(
