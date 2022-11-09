@@ -7,8 +7,8 @@ class DashboardPage extends StatefulWidget {
   const DashboardPage({super.key});
 
   @override
-  State<DashboardPage> createState() => _DashboardPageState();
-  //State<DashboardPage> createState() => _DashboardPageState_V2();
+  //State<DashboardPage> createState() => _DashboardPageState();
+  State<DashboardPage> createState() => _DashboardPageStateV2();
 }
 
 class _DashboardPageState extends State<DashboardPage> {
@@ -16,7 +16,7 @@ class _DashboardPageState extends State<DashboardPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Color.fromARGB(255, 245, 245, 245),
+        color: const Color.fromARGB(255, 245, 245, 245),
         child: Html(
           data: htmlData,
           tagsList: Html.tags,
@@ -54,10 +54,66 @@ const htmlData = r"""
 """;
 
 // ------------ An version of the page not using HTML ----------//
-class _DashboardPageState_V2 extends State<DashboardPage> {
+class _DashboardPageStateV2 extends State<DashboardPage> {
   Future<void> computeFuture = Future.value();
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          //mainAxisAlignment: MainAxisAlignment.spaceBetween, //???
+          children: <Widget>[
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: Theme.of(context).colorScheme.outline,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(12)),
+                      ),
+                      child: const Text(
+                        'row 1',
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: <Widget>[
+                        Expanded(
+                          child: Card(
+                            child: Text(
+                              'column 1',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Card(
+                            child: Text(
+                              'column 1',
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
