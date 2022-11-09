@@ -64,14 +64,11 @@ class HomePage extends StatelessWidget {
             ),
             title: const Text('Hopeland Systems Test App'),
           ),
-          /*
           body: const TabBarView(
             children: [
               DashboardPage(),
-              
             ],
           ),
-          */
         ),
       ),
     );
