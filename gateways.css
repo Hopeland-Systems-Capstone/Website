@@ -76,12 +76,11 @@ html, body {
 
 .descriptors{
   margin-top: 35px;
-  margin-left: 10px;
+  margin-left: 30px;
 }
 
 .searchDevice{
-  margin-top: 35px;
-  margin-left: 10px;
+  margin-top: 30px;
 }
 
 .barometricPressure{
@@ -209,7 +208,12 @@ html, body {
 }
 
 .co2Graph{
-
   height: 230px;
   margin-top: 30px;
+}
+
+.gatewayTable{
+  margin-left: 45px;
+  margin-top: 40px;
+  border: 2px solid black;
 }
