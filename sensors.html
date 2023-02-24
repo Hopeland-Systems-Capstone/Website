@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Gateways</title>
-  <link href="gateways.css" rel="stylesheet" type="text/css" />
+  <title>Sensors</title>
+  <link href="sensors.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <script src="gateways.js"></script>
+  <script src="sensors.js"></script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
@@ -35,10 +35,10 @@
             <a class="nav-link" href="index.html">Dashboard</a>
           </li>
           <li class="nav-item navbarItems">
-            <a class="nav-link active" href="gateways.html">Gateways</a>
+            <a class="nav-link" href="gateways.html">Gateways</a>
           </li>
           <li class="nav-item navbarItems">
-            <a class="nav-link" href="sensors.html">Sensors</a>
+            <a class="nav-link active" href="sensors.html">Sensors</a>
           </li>
           <li class="nav-item navbarItems">
             <a class="nav-link" href="map.html">Map</a>
@@ -66,10 +66,19 @@
 
     <div class="row">
       <div class="col-2">
-        <div class="title"> Gateways Status </div>
+        <div class="title"> Sensor Status </div>
       </div>
       <div class="col-2">
         <input type="search" class="form-control searchDevice" placeholder="Search Devices">
+      </div>
+      <div class="col-1">
+        <div class="descriptors"> Forest - 3 </div>
+      </div>
+      <div class="col-1">
+        <div class="descriptors"> Flood - 0 </div>
+      </div>
+      <div class="col-1">
+        <div class="descriptors"> Alarm - 0 </div>
       </div>
       <div class="col-1">
         <div class="descriptors"> Normal - 4 </div>
@@ -90,7 +99,7 @@
             <tr>
               <th scope="col">Status</th>
               <th scope="col">Device Name</th>
-              <th scope="col">Associated Devices (Joined / NotJoined / Failed)</th>
+              <th scope="col">Interface Status</th>
               <th scope="col">Last Update</th>
               <th scope="col"> </th>
             </tr>
@@ -102,9 +111,16 @@
                 <div>VS121-DEMO</div>
                 <div>6600C3163121</div>
               </td>
-              <td class="align-middle">Joined</td>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-1"> a </div>
+                  <div class="col-1"> b</div>
+                  <div class="col-1"> b</div>
+                  <div class="col-1"> sa</div>
+                </div>
+              </td>
               <td class="align-middle">6 minutes ago</td>
-              <td class="align-middle"><img src="images/iIcon.png"></img></td>
+              <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img></td>
             </tr>
             <tr>
               <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
@@ -112,9 +128,16 @@
                 <div>VS121-DEMO</div>
                 <div>6600C3163121</div>
               </td>
-              <td class="align-middle">Joined</td>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-1"> a </div>
+                  <div class="col-1"> b</div>
+                  <div class="col-1"> b</div>
+                  <div class="col-1"> sa</div>
+                </div>
+              </td>
               <td class="align-middle">6 minutes ago</td>
-              <td class="align-middle"><img src="images/iIcon.png"></img></td>
+              <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img></td>
             </tr>
             <tr>
               <th scope="row" class="align-middle"> <span class="dot3"></span> Offline</th>
@@ -122,11 +145,18 @@
                 <div>VS121-DEMO</div>
                 <div>6600C3163121</div>
               </td>
-              <td class="align-middle">Joined</td>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-1"> a </div>
+                  <div class="col-1"> b</div>
+                  <div class="col-1"> b</div>
+                  <div class="col-1"> sa</div>
+                </div>
+              </td>
               <td class="align-middle">6 minutes ago</td>
-              <td class="align-middle"><img src="images/iIcon.png"></img></td>
+              <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img> </td>
             </tr>
-            
+
           </tbody>
         </table>
       </div>
