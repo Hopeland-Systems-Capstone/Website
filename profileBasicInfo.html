@@ -71,32 +71,50 @@
       </div>
       <div class="col-10">
         <div class="profileButtonGroup d-grid gap-5 d-md-block">
-          <button class="btn btn-outline active" type="button">Button</button>
-          <button class="btn btn-outline" type="button">Button</button>
-          <button class="btn btn-outline" type="button">Button</button>
-          <button class="btn btn-outline" type="button">Button</button>
-          <button class="btn btn-outline" type="button">Button</button>
-          <button class="btn btn-outline" type="button">Button</button>
+          <button class="btn btn-colour-1 active " type="button" href="profileBasicInfo.html">Basic
+            Information</button>
+          <button class="btn btn-colour-1 " type="button">Billing Information</button>
+          <button class="btn btn-colour-1 " type="button">Billing History</button>
+          <button class="btn btn-colour-1 " type="button">Date & Time</button>
+          <button class="btn btn-colour-1 " type="button">Change Password</button>
+          <button class="btn btn-colour-1 " type="button">Alarm Recipients</button>
         </div>
       </div>
-
     </div>
 
+    <div class="row firstSpacer"> </div>
+
+    
     <div class="row">
-      <div class="col-2">
-        <img src="images/sensorKey.png" class="sensorKey"> </img>
+      <div class="col-3 basicInformation">
+        <form>
+          <div class="form-group">
+            <label for="exampleInputEmail1" class="required infoTitle">Email Address:</label>
+            <input type="email" class="form-control" aria-describedby="emailHelp">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="required infoTitle">Last Name:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="required infoTitle">First Name:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="infoTitle">Company Name:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1" class="infoTitle">Phone Number:</label>
+            <input type="password" class="form-control" id="exampleInputPassword1">
+          </div>
+      
+          <button type="submit" class="btn btn-outline active">Save</button>
+        </form>
       </div>
     </div>
 
-    <div class="row">
 
-      <div class="col-10">
-        <!-- AREA TO PLACE JAVASCRIPT MAP BELOW -->
-        <img src="images/mapExample.jpeg" class="classExample"> </img>
-      </div>
-
-      <div class="col-1"> </div>
-    </div>
   </section>
 
   <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
