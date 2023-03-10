@@ -15,10 +15,17 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
+    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+    crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
+     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
+     crossorigin=""></script>
 </head>
 
 <body>
-  <script src="map.js"></script>
+  
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
@@ -76,11 +83,11 @@
       </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="map-container">
 
       <div class="col-10">
         <!-- AREA TO PLACE JAVASCRIPT MAP BELOW -->
-        <img src="images/mapExample.jpeg" class="classExample"> </img>
+        <div class="custom-popup" id="map"></div>
       </div>
 
       <div class="col-1"> </div>
@@ -91,6 +98,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
+    <script src="map.js"></script>
 </body>
 
 </html>
