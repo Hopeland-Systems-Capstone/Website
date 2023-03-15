@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=yes">
   <title>Dashboard</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,7 +20,7 @@
 <body>
   <script src="script.js"></script>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
+  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
       <a class="navbar-brand" href="index.html">
         <img src="images/mainLogo.png" class="mainLogo">
@@ -58,84 +58,99 @@
         </ul>
       </div>
     </div>
+  </nav> -->
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/mainLogo.png" class="mainLogo">
+      </a>
+
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarNav">
+
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <li class="nav-item navbarItems1">
+            <a class="nav-link active" href="index.html">Dashboard</a>
+          </li>
+          <li class="nav-item navbarItems">
+            <a class="nav-link" href="gateways.html">Gateways</a>
+          </li>
+          <li class="nav-item navbarItems">
+            <a class="nav-link" href="sensors.html">Sensors</a>
+          </li>
+          <li class="nav-item navbarItems">
+            <a class="nav-link" href="map.html">Map</a>
+          </li>
+          <li class="nav-item navbarItems">
+            <a class="nav-link" href="reports.html">Reports</a>
+          </li>
+        </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0" style="margin-left: auto;">
+          <li class="nav-item navbarPictures">
+            <a class="nav-link" href="#"><img src="images/searchWhite.png"></a>
+          </li>
+          <li class="nav-item navbarPictures">
+            <a class="nav-link" href="#"><img src="images/bellWhite.png"></a>
+          </li>
+          <li class="nav-item navbarPictures">
+            <a class="nav-link" href="profileBasicInfo.html"><img src="images/avatarWhite.png"></a>
+          </li>
+        </ul>
+
+      </div>
+    </div>
   </nav>
 
   <section class="bodyArea">
+
     <div class="title"> Overview </div>
     <div class="row firstSpacer"> </div>
-    <div class="row">
-      <div class="col-1"></div>
 
-      <div class="col-4 shadow p-3 barometricPressure">
-        <div class="container barometricTitle"> Barometric Pressure <div class="measurements"> <span
-              class="dot1"></span> High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-        </div>
-        <img src="images/pressureGraph.png" class="pressureGraph">
-      </div>
-
-      <div class="col-4 shadow p-3 temperature">
-        <div class="container temperatureTitle"> Temperature </div>
-        <div class="row">
-          <div class="col-9">
-            <img src="images/temperatureGraph.png" class="temperatureGraph">
-          </div>
-          <div class="col-3">
-            <div class="measurements1">
-              <div> <span class="dot1"> </span> High </div>
-              <div><span class="dot2"> </span> Average </div>
-              <div><span class="dot3"> </span> Low </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-1"> </div>
-    </div>
-
-    <div class="row secondSpacer"> </div>
-    <div class="row">
-      <div class="col-1"></div>
-
-      <div class="col-4 shadow p-3 co2level">
-        <div class="container co2levelTitle"> CO2 Level <div class="measurements1"><span
-              class="dot1"></span> High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          <img src="images/pressureGraph.png" class="co2Graph">
-      
-      </div>
-
-    </div>
-
-    <div class="col-4 shadow p-3 humidity">
-      <div class="container humidityTitle"> Humidity </div>
+    <div class="container d-flex justify-content-center align-items-center" style="margin-left: auto; margin-right: auto;">
       <div class="row">
-        <div class="col-9">
-          <img src="images/temperatureGraph.png" class="temperatureGraph">
-        </div>
-        <div class="col-3">
-          <div class="measurements1">
-            <div> <span class="dot1"> </span> High </div>
-            <div><span class="dot2"> </span> Average </div>
-            <div><span class="dot3"> </span> Low </div>
+        <div class="col-lg-6 shadow p-3 barometricPressure" style="max-width: 600px; width: auto;">
+          <div class="container barometricTitle"> Barometric Pressure <div class="measurements"> <span
+                class="dot1"></span> High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
           </div>
+          <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 0.9">
         </div>
-      </div>
-    </div>
 
-    <div class="col-1"> </div>
-    </div>
-
-    <div class="row thirdSpacer"> </div>
-    <div class="row">
-      <div class="col-1"></div>
-
-      <div class="col-4 shadow p-3 waterLevel">
-        <div class="container waterLevelTitle"> Water Level <div class="measurements1"><span
-              class="dot1"></span> High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          <img src="images/pressureGraph.png" class="co2Graph">
+        <div class="col-lg-6 shadow p-3 temperature" style="max-width: 600px; width: auto;">
+          <div class="container temperatureTitle"> Temperature <div class="measurements"> <span class="dot1"></span>
+              High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
+          </div>
+          <img src="images/temperatureGraph.png" class="img-fluid temperatureGraph" style="scale: 0.9">
         </div>
-      </div>
 
-      <div class="col-1"> </div>
+        <div class="col-lg-6 shadow p-3 co2level" style="max-width: 600px; width: auto;">
+          <div class="container co2levelTitle"> CO2 Level <div class="measurements"> <span class="dot1"></span> High
+              <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
+          </div>
+          <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 0.9">
+        </div>
+
+        <div class="col-lg-6 shadow p-3 humidity" style="max-width: 600px; width: auto;">
+          <div class="container humidityTitle"> Humidity <div class="measurements"> <span class="dot1"></span> High
+              <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
+          </div>
+          <img src="images/temperatureGraph.png" class="img-fluid temperatureGraph" style="scale: 0.9">
+        </div>
+
+        <div class="col-lg-6 shadow p-3 waterLevel" style="max-width: 600px; width: auto;">
+          <div class="container waterLevelTitle"> Water Level <div class="measurements"> <span class="dot1"></span> High
+              <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
+          </div>
+          <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 0.9">
+        </div>
+
+      </div>
     </div>
   </section>
 
