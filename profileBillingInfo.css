@@ -308,3 +308,27 @@ html, body {
   margin-bottom: 10px;
 }
 
+.btn-outline1 {
+  color: grey;
+  background-color: #ffffff;
+  border-color: grey;
+  font-weight: bold;
+}
+
+.btn-outline1 {
+  color: grey;
+  background-color: #ffffff;
+  border-color: grey;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.btn-outline1:hover,
+.btn-outline1:active,
+.btn-outline1:focus,
+.btn-outline1.active {
+  background: grey;
+  color: #ffffff;
+  border-color: grey;
+}
+
