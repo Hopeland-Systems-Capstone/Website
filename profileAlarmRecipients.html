@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ProfileBillingHistory</title>
-  <link href="profileBillingHistory.css" rel="stylesheet" type="text/css" />
+  <title>ProfileAlarmRecipients</title>
+  <link href="profileAlarmRecipients.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-  <script src="profileBillingHistory.js"></script>
+  <script src="profileAlarmRecipients.js"></script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
@@ -75,13 +75,14 @@
             Information</button>
           <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileBillingInfo.html';">Billing
             Information</button>
-          <button class="btn btn-colour-1 active" type="button"
+          <button class="btn btn-colour-1 " type="button"
             onclick="location.href = 'profileBillingHistory.html';">Billing History</button>
-          <button class="btn btn-colour-1 " type="button" onclick="location.href = 'profileDateTime.html';">Date &
+          <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileDateTime.html';">Date &
             Time</button>
           <button class="btn btn-colour-1 " type="button" onclick="location.href = 'profileChangePassword.html';">Change
             Password</button>
-          <button class="btn btn-colour-1 " type="button" onclick="location.href = 'profileAlarmRecipients.html';">Alarm
+          <button class="btn btn-colour-1 active" type="button"
+            onclick="location.href = 'profileAlarmRecipients.html';">Alarm
             Recipients</button>
         </div>
       </div>
@@ -96,44 +97,39 @@
         <table class="table table-hover gatewayTable shadow p-3">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Invoice</th>
-              <th scope="col" class="align-middle">Billing Date</th>
-              <th scope="col" class="align-middle">Status</th>
-              <th scope="col" class="align-middle">Amount</th>
+              <th scope="col" class="align-middle">Name</th>
+              <th scope="col" class="align-middle">Email</th>
+              <th scope="col" class="align-middle">Enable</th>
+              <th scope="col" class="align-middle">Operation</th>
+              <th scope="col"> <button type="submit" class="btn btn-outline active" class="align-middle">+ Alarm
+                  Recipient</button></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td scope="row" class="align-middle">Invoice #007 - 12/2022</td>
-              <td class="align-middle"> 12/01/2022
+              <td scope="row" class="align-middle"> Sample Name </td>
+              <td class="align-middle"> sampleEmail@gmail.com</td>
+              <td class="align-middle">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
+                </div>
               </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
+              <td class="align-middle"> </td>
+              <td class="align-middle"><img class="trash" src="images/trash.png"></td>
             </tr>
 
             <tr>
-              <td scope="row" class="align-middle">Invoice #006 - 11/2022</td>
-              <td class="align-middle"> 11/01/2022
+              <td scope="row" class="align-middle"> Sample Name </td>
+              <td class="align-middle"> sampleEmail@gmail.com</td>
+              <td class="align-middle">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
+                </div>
               </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
+              <td class="align-middle"> </td>
+              <td class="align-middle"><img class="trash" src="images/trash.png"></td>
             </tr>
 
-            <tr>
-              <td scope="row" class="align-middle">Invoice #005 - 10/2022</td>
-              <td class="align-middle"> 10/01/2022
-              </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
-            </tr>
-
-            <tr>
-              <td scope="row" class="align-middle">Invoice #004 - 09/2022</td>
-              <td class="align-middle"> 09/01/2022
-              </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
-            </tr>
           </tbody>
         </table>
       </div>
