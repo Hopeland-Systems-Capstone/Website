@@ -214,7 +214,7 @@ html, body {
 
 .gatewayTable{
   margin-left: 45px;
-  margin-top: 40px;
+  margin-top: 30px;
   border: 2px solid black;
 }
 
@@ -230,69 +230,105 @@ html, body {
   border-radius: 20px;
 }
 
-.custom-popup .leaflet-popup-tip-container { 
-  width: 0px; 
-  height: 0px; 
+.profileButtonGroup{
+  margin-top: 27.5px;
 }
 
-.custom-popup .leaflet-popup-content-wrapper {
-  background-color: #F4E5B5;
-  border-radius: 5px;
+.btn-colour-1 {
+  color: #767676;
+  border-color: #767676;
+  font-weight: bold;
+  border-radius: 8px;
 }
 
-.custom-popup .leaflet-popup-content {
-  margin: 20px 10px 10px 10px;
+.btn-colour-1:active,
+.btn-colour-1:focus,
+.btn-colour-1.active {
+  background: #D7F2BD;
+  color: #767676;
+  border-color: #767676;
 }
 
-.bodyArea {
-  display: flex;
-  flex-direction: column;
+.btn-colour-1:hover{
+  background: #D7F2BD;
 }
 
-#map {
+.basicInformation{
   margin-left: 45px;
-  margin-top: 20px;
-  height: 100%;
-  min-height: 200px;
-  border-radius: 10px;
 }
 
-#map-container {
-  flex: 5 1 500px;
+.infoTitle{
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.required:after {
+    content:" *";
+    color: red;
+  }
+
+.basicInfoTitle{
+  font-size: 20px;
+  font-weight: 700;
+  margin-left: 45px;
 }
 
-.markerHoverBox {
-  display:flex;
-  flex-direction: column;
-  height: 200px;
-  width: 300px;
-  margin: 10px;
-  align-items: left;
-  justify-content: space-around;
-  
+.form-control{
+  margin-bottom: 10px;
 }
 
-.markerHoverBoxDeviceName {
-  width: 100%;
-  height: 20%;
-  font-size: 12pt;
-  margin: 3px;
+
+.btn-outline {
+  color: #576846;
+  background-color: #ffffff;
+  border-color: #576846;
+  font-weight: bold;
 }
 
-.markerHoverBoxDeviceInfo {
-  width: 100%;
-  height: 80%;
-  display: flex;
-  flex-direction: row;
-  font-size: 10pt;
+.btn-outline {
+  color: #576846;
+  background-color: #ffffff;
+  border-color: #576846;
+  font-weight: bold;
+  border-radius: 0;
 }
 
-.markerHoverBoxDeviceStatus {
-  width: 40%;
-  margin: 5px;
+.btn-outline:hover,
+.btn-outline:active,
+.btn-outline:focus,
+.btn-outline.active {
+  background: #576846;
+  color: #ffffff;
+  border-color: #576846;
 }
 
-.markerHoverBoxDeviceDetails {
-  width: 60%;
-  margin: 5px;
+.trash{
+  margin-left: 45px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
+
+.btn-outline1 {
+  color: grey;
+  background-color: #ffffff;
+  border-color: grey;
+  font-weight: bold;
+}
+
+.btn-outline1 {
+  color: grey;
+  background-color: #ffffff;
+  border-color: grey;
+  font-weight: bold;
+  border-radius: 0;
+}
+
+.btn-outline1:hover,
+.btn-outline1:active,
+.btn-outline1:focus,
+.btn-outline1.active {
+  background: grey;
+  color: #ffffff;
+  border-color: grey;
+}
+
