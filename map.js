@@ -11,9 +11,11 @@ function createSensorData(id, lat, long, name, type, onlineStatus) {
     name: name,           // --descriptive name of sensor location
     type: type,
     onlineStatus: onlineStatus,
-    temperature: 70,      // --temperature in farenheit
-    humidity: .1,         // --humidity; .1 = 10%
-    co2: 300              // --carbon dioxide levels in parts per million
+    temperature: [70],      // --temperature in farenheit
+    humidity: [.1],         // --humidity; .1 = 10%
+    co2: [300],             // --carbon dioxide levels in parts per million
+    pressure: [1016],       // --barometric pressure in hPa
+    battery: [100]
   }
 }
 
@@ -37,7 +39,7 @@ function createMarker(sensor) {
   var marker = new customMarker([sensor.latitude, sensor.longitude], {icon: sensorIcon}).addTo(map);
   var popuptext = markerMouseOverGenerate(sensor);
   var popup = new L.popup({ offset:[0,15] }).setContent(popuptext);
-  marker.bindPopup(popup, { showOnMouseOver: true });
+  marker.bindPopup(popup, { showOnMouseOver: true, maxWidth: 500 });
 
   return marker;
 }
@@ -145,14 +147,31 @@ function markerMouseOverGenerate(sensor) {
   return (
     `<div class='markerHoverBox'>
       <div class='markerHoverBoxDeviceName'>
-        ${sensor.name} - ${sensor.type}
+        <h5>${sensor.name} - ${sensor.type}</h5>
       </div>
       <div class='markerHoverBoxDeviceInfo'>
         <div class='markerHoverBoxDeviceStatus'>
-          test text 
+          <b>Interface Status</b><br>
+          CO2: <span class="device-detail">${sensor.co2.at(-1)} ppm</span><br>
+          Temperature: <span class="device-detail">${sensor.temperature.at(-1)}C </span><br>
+          Humidity: <span class="device-detail">${sensor.humidity.at(-1)*100}%</span><br>
+          Barometric Pressure: <span class="device-detail">${sensor.pressure.at(-1)} hPa</span><br>
         </div>
         <div class='markerHoverBoxDeviceDetails'>
-          test text
+          <b>Device Information</b><br>
+          RSSI: <span class="device-detail">-63 dBm</span><br>
+          SNR: <span class="device-detail">14 dB</span><br>
+          SN: <span class="device-detail">178FJWO9SKLL8</span><br>
+          SF: <span class="device-detail">7</span><br>
+          Battery: <span class="device-detail">${sensor.battery.at(-1)}%</span><br>
+          Model: <span class="device-detail">WS101</span><br>
+          IMEI: <span class="device-detail">-</span><br>
+          Firmware: <span class="device-detail">-</span><br>
+          Group Name: <span class="device-detail">-</span><br>
+          Hardware: <span class="device-detail">-</span><br>
+          Device ID: <span class="device-detail">-</span><br>
+          Associated Gateway: <span class="device-detail">-</span><br>
+          Device EUI: <span class="device-detail">-</span><br>
         </div>
       </div>
     </div>`
