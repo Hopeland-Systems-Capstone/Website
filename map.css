@@ -260,7 +260,7 @@ html, body {
 }
 
 #map-container {
-  flex: 5 1 500px;
+  flex: 5 1 800px;
 }
 
 .markerHoverBox {
