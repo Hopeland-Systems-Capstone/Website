@@ -4,7 +4,7 @@ function update(){
     //called on page load from listener
     console.log("This is called on page load.");
 
-    // use this to call other functions as needed
+    load_reports();
 }
 
 function load_reports(){
@@ -76,7 +76,7 @@ function createRow(alertText){
     
     // Note: organize by time
 
-    // id = _id or alert_id
+    // id = alert_id
     // title = title 
     // Enable = alert 
     // Operation = time

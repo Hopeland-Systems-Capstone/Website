@@ -3,17 +3,13 @@ function update(){
     //called on page load from listener
     console.log("This is called on page load.");
 
-    // use this to call other functions as needed
+    load_gateways();
 }
 
 function load_gateways(){
-    // would pull up all sensors? or specific ones?
+    // would pull up all sensors? or specific ones? (for gateways page)
 
     //make restful call
-    //call which? would need names of sensor
-
-    // read the json 
-    //loop thru array of JSON
 
     // below is temp data
     const givenJson = 
@@ -42,10 +38,6 @@ function resetTable(){
 
 // create row for sensors
 function createRow(jsonText){ 
-    
-    // online status - how to get status? 
-    // obj.name = device name and obj.sensor_id as well
-    // how to get last update?
 
     const obj = JSON.parse(jsonText)
 
@@ -58,12 +50,15 @@ function createRow(jsonText){
     online.className = "align-middle";
     let dot = document.createElement("span");
 
-    // if online
-    //dot.className = "dot2";
-    // if inactive 
-    dot.className = "dot3";
-    // if "warning"? (orange option)
-    //dot.className = "dot1";
+    if(obj.status === "Online"){
+        dot.className = "dot2";
+    }
+    else if(obj.status === "Inactive"){
+        dot.className = "dot3";
+    }
+    else{
+        dot.className = "dot1";
+    }
 
     let text = document.createElement("span");
     text.innerText = " Online";
@@ -77,7 +72,6 @@ function createRow(jsonText){
     let name = document.createElement("div");
     name.innerText = obj.name;                  // grabbing JSON obj.name 
     let id = document.createElement("div");
-    // is this supposed to be _id or sensor_id
     id.innerText = obj.sensor_id;               // grabbing JSON obj.sensor_id 
 
     device_name.appendChild(name);

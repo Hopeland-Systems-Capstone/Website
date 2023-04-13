@@ -4,8 +4,7 @@ function update(){
     //called on page load from listener
     console.log("This is called on page load.");
 
-    //use this to call other functions as needed.
-    //how to pull up everysensor without names?
+    load_sensor();
 
 }
 
@@ -80,15 +79,8 @@ function emptyRow(){
 
 // create row for sensors
 function createRow(jsonText){ 
-    
-    // online? how to get status? 
-    // obj.name = device name and obj.sensor_id as well
-    // interface status
-        // CO2 = obj.co2  is this an array?
-        // temp = obj.temperature
-        // humidity = obj.humidity
-        // presure = obj.pressure
-    // how to get last update?
+
+    // how to get last update
 
     const obj = JSON.parse(jsonText)
 
@@ -101,12 +93,15 @@ function createRow(jsonText){
     online.className = "align-middle";
     let dot = document.createElement("span");
 
-    //if online
-    //dot.className = "dot2";
-    // if inactive 
-    dot.className = "dot3";
-    // if "warning"? (orange option)
-    //dot.className = "dot1";
+    if(obj.status === "Online"){
+        dot.className = "dot2";
+    }
+    else if(obj.status === "Inactive"){
+        dot.className = "dot3";
+    }
+    else{
+        dot.className = "dot1";
+    }
 
     let text = document.createElement("span");
     text.innerText = " Online";
@@ -206,7 +201,7 @@ function createRow(jsonText){
     // last update section
     let last_update = document.createElement("td");
     last_update.className = "align-middle";
-    last_update.innerText = "test";             // would need info on last update...
+    last_update.innerText = "test";             // would need info on last update
     
 
     // end section
