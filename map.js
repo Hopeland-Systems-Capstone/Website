@@ -48,7 +48,7 @@ function createSensorData(id, lat, long, name, type, onlineStatus) {
 
 //accepts sensor data structure and creates a marker on the map for that sensor
 function createMarker(sensor) {
-
+  console.log(sensor);
   var latlng;
 
   try {
@@ -58,7 +58,7 @@ function createMarker(sensor) {
     latlng = [temp_latlng[1],temp_latlng[0]]
 
     var sensorIcon;
-    if (sensor.status) {
+    if (sensor.status === "Online") {
       if (sensor.type == "Forest") sensorIcon = forestOnlineIcon;
       if (sensor.type == "Flood") sensorIcon = floodOnlineIcon;
       if (sensor.type == "Gateway") sensorIcon = gatewayOnlineIcon;
@@ -183,6 +183,7 @@ var tempMarker6 = createMarker(tempSensor6);
 */
 
 function markerMouseOverGenerate(sensor) {
+  const co2 = Math.round(sensor.co2.at(-1).value);
   const temperature = Math.round(sensor.temperature.at(-1).value*100)/100;
   const humidity = Math.round(sensor.humidity.at(-1).value*10)/10;
   const pressure = Math.round(sensor.pressure.at(-1).value);
@@ -195,7 +196,7 @@ function markerMouseOverGenerate(sensor) {
       <div class='markerHoverBoxDeviceInfo'>
         <div class='markerHoverBoxDeviceStatus'>
           <b>Interface Status</b><br>
-          CO2: <span class="device-detail">1016 ppm</span><br>
+          CO2: <span class="device-detail">${co2} ppm</span><br>
           Temperature: <span class="device-detail">${temperature}C </span><br>
           Humidity: <span class="device-detail">${humidity}%</span><br>
           Barometric Pressure: <span class="device-detail">${pressure} hPa</span><br>
