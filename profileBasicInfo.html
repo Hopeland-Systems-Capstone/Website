@@ -19,6 +19,12 @@
 
 <body>
   <script src="profileBasicInfo.js"></script>
+  <script>
+    window.onload = function()
+    {
+      update();
+    };
+  </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
@@ -93,29 +99,29 @@
 
     <div class="row">
       <div class="col-3 basicInformation">
-        <form>
+        <form id="profile">
           <div class="form-group">
             <label for="exampleInputEmail1" class="required infoTitle">Email Address:</label>
-            <input type="email" class="form-control" aria-describedby="emailHelp">
+            <input type="email" class="form-control" aria-describedby="emailHelp" name="email">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="required infoTitle">Last Name:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" class="form-control" id="exampleInputPassword1" name="lastName">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="required infoTitle">First Name:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" class="form-control" id="exampleInputPassword2" name="firstName">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="infoTitle">Company Name:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" class="form-control" id="exampleInputPassword3" name="companyName">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="infoTitle">Phone Number:</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <input type="password" class="form-control" id="exampleInputPassword4" name="phoneNumber">
           </div>
 
-          <button type="submit" class="btn btn-outline active">Save</button>
+          <button type="button" class="btn btn-outline active" onclick="save_profile()">Save</button>
         </form>
       </div>
     </div>
