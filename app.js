@@ -26,5 +26,6 @@ async function authMiddleware(req, res, next) {
 
 //Routes
 app.use("/", require("./routes/auth.js"));
+app.use("/", require("./routes/data.js"));
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
