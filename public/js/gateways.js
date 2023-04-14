@@ -1,8 +1,7 @@
 
-function update(){
+window.onload = function() {
     //called on page load from listener
     console.log("This is called on page load.");
-
     // use this to call other functions as needed
 }
 
