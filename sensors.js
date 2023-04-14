@@ -22,7 +22,7 @@ function load_sensor(){
         [{"_id":"63785425c97a925662a44651", "sensor_id":0, "name": "sensor1", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [26.8],"humidity": [45],"co2": [400],"pressure": [1019]},
         {"_id":"63785425c97a925662a44651", "sensor_id":3, "name": "sensor2", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [20.8],"humidity": [45],"co2": [400],"pressure": [1019]}]; 
 
-    givenJson = [];    
+    //givenJson = [];    
 
     resetTable();
 
@@ -36,7 +36,7 @@ function load_sensor(){
             let obj = givenJson[i];
             let jsonText = JSON.stringify(obj);
             //add row for each new data 
-            //createRow(jsonText);
+            createRow(jsonText);
         }
     }
 }
