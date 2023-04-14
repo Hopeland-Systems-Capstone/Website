@@ -100,7 +100,7 @@ function createRow(jsonText){
     graph.className = "align-middle";
     let image2 = document.createElement("img");
     image2.src = "images/iIcon.png";
-    // Probably will need to add links to images
+    // Will need to add links to images eventually
 
     graph.appendChild(image2);
 
