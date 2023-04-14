@@ -27,19 +27,23 @@
 <body>
   
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
     <div class="container-fluid">
       <a class="navbar-brand" href="main.html">
         <img src="images/mainLogo.png" class="mainLogo">
       </a>
+
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
           <li class="nav-item navbarItems1">
-            <a class="nav-link" href="main.html">Dashboard</a>
+            <a class="nav-link active" href="index.html">Dashboard</a>
           </li>
           <li class="nav-item navbarItems">
             <a class="nav-link" href="gateways.html">Gateways</a>
@@ -48,12 +52,15 @@
             <a class="nav-link" href="sensors.html">Sensors</a>
           </li>
           <li class="nav-item navbarItems">
-            <a class="nav-link active" href="map.html">Map</a>
+            <a class="nav-link" href="map.html">Map</a>
           </li>
           <li class="nav-item navbarItems">
             <a class="nav-link" href="reports.html">Reports</a>
           </li>
-          <li class="nav-item navbarPictures1">
+        </ul>
+
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0" style="margin-left: auto;">
+          <li class="nav-item navbarPictures">
             <a class="nav-link" href="#"><img src="images/searchWhite.png"></a>
           </li>
           <li class="nav-item navbarPictures">
@@ -63,29 +70,35 @@
             <a class="nav-link" href="profileBasicInfo.html"><img src="images/avatarWhite.png"></a>
           </li>
         </ul>
+
       </div>
     </div>
   </nav>
 
-  <section class="bodyArea">
+  <section class="bodyArea container-fluid">
 
     <div class="row firstSpacer"> </div>
 
     <div class="row">
-      <div class="col-3">
+      <div class="col-1"> </div>
+      <div class="col">
         <div class="title"> Overview of All Devices </div>
       </div>
+      <div class="col-1"> </div>
     </div>
 
     <div class="row">
-      <div class="col-3">
-        <img src="images/sensorKey.png" class="sensorKey"> </img>
+      <div class="col-1"> </div>
+      <div class="col" style="max-width:600px">
+        <img src="images/sensorKey.png" class="img-fluid sensorKey"> </img>
       </div>
+      <div class="col-1"> </div>
     </div>
 
     <div class="row" id="map-container">
+      <div class="col-1"> </div>
 
-      <div class="col-10">
+      <div class="col">
         <!-- AREA TO PLACE JAVASCRIPT MAP BELOW -->
         <div class="custom-popup" id="map"></div>
       </div>
