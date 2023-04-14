@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Map</title>
-  <link href="map.css" rel="stylesheet" type="text/css" />
+  <title>Reports</title>
+  <link href="css/reports.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,35 +15,31 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css"
-    integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js"
-     integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg="
-     crossorigin=""></script>
 </head>
 
 <body>
-  
+  <script src="js/reports.js"></script>
+  <script>
+    window.onload = function()
+    {
+      update();
+      load_reports();
+    };
+  </script>
 
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="main.html">
         <img src="images/mainLogo.png" class="mainLogo">
       </a>
-
-
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-
       <div class="collapse navbar-collapse" id="navbarNav">
-
-        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        <ul class="navbar-nav">
           <li class="nav-item navbarItems1">
-            <a class="nav-link active" href="index.html">Dashboard</a>
+            <a class="nav-link" href="main.html">Dashboard</a>
           </li>
           <li class="nav-item navbarItems">
             <a class="nav-link" href="gateways.html">Gateways</a>
@@ -55,12 +51,9 @@
             <a class="nav-link" href="map.html">Map</a>
           </li>
           <li class="nav-item navbarItems">
-            <a class="nav-link" href="reports.html">Reports</a>
+            <a class="nav-link active" href="reports.html">Reports</a>
           </li>
-        </ul>
-
-        <ul class="navbar-nav me-auto mb-2 mb-sm-0" style="margin-left: auto;">
-          <li class="nav-item navbarPictures">
+          <li class="nav-item navbarPictures1">
             <a class="nav-link" href="#"><img src="images/searchWhite.png"></a>
           </li>
           <li class="nav-item navbarPictures">
@@ -70,48 +63,59 @@
             <a class="nav-link" href="profileBasicInfo.html"><img src="images/avatarWhite.png"></a>
           </li>
         </ul>
-
       </div>
     </div>
   </nav>
 
-  <section class="bodyArea container-fluid">
+  <section class="bodyArea">
 
     <div class="row firstSpacer"> </div>
 
     <div class="row">
-      <div class="col-1"> </div>
-      <div class="col">
-        <div class="title"> Overview of All Devices </div>
+      <div class="col-3">
+        <div class="title"> Reports </div>
       </div>
-      <div class="col-1"> </div>
     </div>
+
 
     <div class="row">
-      <div class="col-1"> </div>
-      <div class="col" style="max-width:600px">
-        <img src="images/sensorKey.png" class="img-fluid sensorKey"> </img>
+
+      <div class="col-10">
+        <table class="table table-hover gatewayTable shadow p-3" id = "reports-table">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Enable</th>
+              <th scope="col">Operation</th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+          <tbody id = "table-body">
+            <tr>
+              <th scope="row" class="align-middle"> </th>
+              <td class="align-middle"></td>
+              <td class="align-middle">You do not have any reports.</td>
+              <td class="align-middle"></td>
+              <td class="align-middle"></td>
+            </tr>
+
+          </tbody>
+        </table>
       </div>
       <div class="col-1"> </div>
     </div>
+    </div>
 
-    <div class="row" id="map-container">
-      <div class="col-1"> </div>
 
-      <div class="col">
-        <!-- AREA TO PLACE JAVASCRIPT MAP BELOW -->
-        <div class="custom-popup" id="map"></div>
-      </div>
-
-      <div class="col-1"> </div>
+    <div class="col-1"> </div>
     </div>
   </section>
 
-  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-    <script src="map.js"></script>
 </body>
 
 </html>

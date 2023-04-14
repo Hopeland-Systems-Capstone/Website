@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ProfileBillingHistory</title>
-  <link href="profileBillingHistory.css" rel="stylesheet" type="text/css" />
+  <title>ProfileBillingInfo</title>
+  <link href="css/profileBillingInfo.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,11 +18,11 @@
 </head>
 
 <body>
-  <script src="profileBillingHistory.js"></script>
+  <script src="js/profileBillingInfo.js"></script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
-      <a class="navbar-brand" href="index.html">
+      <a class="navbar-brand" href="main.html">
         <img src="images/mainLogo.png" class="mainLogo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -32,7 +32,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item navbarItems1">
-            <a class="nav-link" href="index.html">Dashboard</a>
+            <a class="nav-link" href="main.html">Dashboard</a>
           </li>
           <li class="nav-item navbarItems">
             <a class="nav-link" href="gateways.html">Gateways</a>
@@ -73,11 +73,12 @@
         <div class="profileButtonGroup d-grid gap-5 d-md-block">
           <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileBasicInfo.html';">Basic
             Information</button>
-          <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileBillingInfo.html';">Billing
-            Information</button>
           <button class="btn btn-colour-1 active" type="button"
+            onclick="location.href = 'profileBillingInfo.html';">Billing
+            Information</button>
+          <button class="btn btn-colour-1 " type="button"
             onclick="location.href = 'profileBillingHistory.html';">Billing History</button>
-          <button class="btn btn-colour-1 " type="button" onclick="location.href = 'profileDateTime.html';">Date &
+          <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileDateTime.html';">Date &
             Time</button>
           <button class="btn btn-colour-1 " type="button" onclick="location.href = 'profileChangePassword.html';">Change
             Password</button>
@@ -96,43 +97,35 @@
         <table class="table table-hover gatewayTable shadow p-3">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Invoice</th>
-              <th scope="col" class="align-middle">Billing Date</th>
+              <th scope="col" class="align-middle">Name</th>
+              <th scope="col" class="align-middle">Expiration Date</th>
+
               <th scope="col" class="align-middle">Status</th>
-              <th scope="col" class="align-middle">Amount</th>
+              <th scope="col" class="align-middle"> </th>
+              <th scope="col"> <button type="submit" class="btn btn-outline active" class="align-middle">+ New
+                  Card</button></th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td scope="row" class="align-middle">Invoice #007 - 12/2022</td>
-              <td class="align-middle"> 12/01/2022
+              <td scope="row" class="align-middle"> <img src="images/visaLogo.png"> Visa Card **** 1234</td>
+              <td class="align-middle"> 12/2022
               </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
+
+              <td class="align-middle"><span class="dot2"></span> Active</td>
+              <td class="align-middle"> </td>
+              <td class="align-middle"><img class="trash" src="images/trash.png"></td>
             </tr>
 
             <tr>
-              <td scope="row" class="align-middle">Invoice #006 - 11/2022</td>
-              <td class="align-middle"> 11/01/2022
+              <td scope="row" class="align-middle"> <img src="images/visaLogo.png"> Visa Card **** 1234</td>
+              <td class="align-middle"> 12/2022
               </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
-            </tr>
 
-            <tr>
-              <td scope="row" class="align-middle">Invoice #005 - 10/2022</td>
-              <td class="align-middle"> 10/01/2022
-              </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
-            </tr>
-
-            <tr>
-              <td scope="row" class="align-middle">Invoice #004 - 09/2022</td>
-              <td class="align-middle"> 09/01/2022
-              </td>
-              <td class="align-middle"><span class="dot2"></span> Paid</td>
-              <td class="align-middle"> $100.00 CAD </td>
+              <td class="align-middle"><span class="dot3"></span> Inactive</td>
+              <td class="align-middle"><button type="submit" class="btn btn-outline1 active"> Use This Card
+                </button></td>
+              <td class="align-middle"><img class="trash" src="images/trash.png"></td>
             </tr>
           </tbody>
         </table>
@@ -141,7 +134,6 @@
 
   </section>
 
-  <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
