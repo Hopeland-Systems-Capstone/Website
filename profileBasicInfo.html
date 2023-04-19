@@ -118,10 +118,11 @@
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class="infoTitle">Phone Number:</label>
-            <input type="password" class="form-control" id="exampleInputPassword4" name="phoneNumber">
+            <input type="password" class="form-control" id="exampleInputPassword4" name="phoneNumber" maxlength="10">
           </div>
 
           <button type="button" class="btn btn-outline active" onclick="save_profile()">Save</button>
+          <div style="color:red; padding-top: 16px;" id="message"></div>
         </form>
       </div>
     </div>

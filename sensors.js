@@ -14,8 +14,11 @@ function load_sensor(){
     //make restful call
     //call which? would need names of sensor
 
-    // read the json 
-    //loop thru array of JSON
+    //get user id from token
+
+    //user sensor from id
+
+    //loop
 
     // below is temp data
     let givenJson = 
@@ -117,7 +120,6 @@ function createRow(jsonText){
     let name = document.createElement("div");
     name.innerText = obj.name;                  // grabbing JSON obj.name 
     let id = document.createElement("div");
-    // is this supposed to be _id or sensor_id
     id.innerText = obj.sensor_id;               // grabbing JSON obj.sensor_id 
 
     device_name.appendChild(name);
@@ -203,7 +205,10 @@ function createRow(jsonText){
     // last update section
     let last_update = document.createElement("td");
     last_update.className = "align-middle";
-    last_update.innerText = "test";             // would need info on last update
+    let given_time = obj.last_update;
+    let dateObj = new Date(given_time * 1000)
+    let update_string = dateObj.toLocaleString();
+    last_update.innerText = update_string;             // grabbing Json obj.last_update
     
 
     // end section

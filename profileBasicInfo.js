@@ -6,10 +6,13 @@ function update(){
 
     //called when you load page
 
-    // load_profile
-
+    load_profile();
+    clear_message();
 }
 
+function get_profile(){
+
+}
 
 function load_profile(){
 
@@ -36,17 +39,70 @@ function save_profile(){
 
     let form = document.getElementById("profile");
 
+    //find values given
     let email = form.email.value;
-    console.log("email found: " + email);
-    //let lastName = form.lastName.value;
+    let lastName = form.lastName.value;
+    let firstName = form.firstName.value;
+    let companyName = form.companyName.value;
+    let phoneNumber = form.firstName.value;
 
-    // get last name
+    //if email is valid
+    if(email){
+        //call post to email
 
-    // get first Name
+    }else{
+        alert("Missing input in required section");
+        error_message();
+        return;
+    } 
 
-    // get company (if there)
+    if(lastName){
+        //call post to last name
 
-    // get phone number (if there)
+    }else{
+        alert("Missing input in required section");
+        error_message();
+        return;
+    } 
+
+    if(firstName){
+        //call post to first name
+
+    }else{
+        alert("Missing input in required section");
+        error_message();
+        return;
+    } 
+
+    //if company name was given
+    if(companyName){ // should check for illegal characters
+        //post email
+        //restful call
+    }
+
+    if(phoneNumber){ // check for only nums
+
+    }else{
+        alert("Incorrect characters in Phone Number");
+        error_message();
+        return;
+    }
 
 }
+
+function error_message(){
+    let element = document.getElementById("message");
+    element.innerText = "Unable to Save"
+}
+
+function save_message(){
+    let element = document.getElementById("message");
+    element.innerText = "Saved"
+}
+
+function clear_message(){
+    let element = document.getElementById("message");
+    element.innerText = ""
+}
+
 
