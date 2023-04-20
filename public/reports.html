@@ -4,8 +4,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>ProfileAlarmRecipients</title>
-  <link href="profileAlarmRecipients.css" rel="stylesheet" type="text/css" />
+  <title>Reports</title>
+  <link href="css/reports.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +18,13 @@
 </head>
 
 <body>
-  <script src="profileAlarmRecipients.js"></script>
+  <script src="js/reports.js"></script>
+  <script>
+    window.onload = function()
+    {
+      update();
+    };
+  </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
     <div class="container-fluid">
@@ -44,7 +50,7 @@
             <a class="nav-link" href="map.html">Map</a>
           </li>
           <li class="nav-item navbarItems">
-            <a class="nav-link" href="reports.html">Reports</a>
+            <a class="nav-link active" href="reports.html">Reports</a>
           </li>
           <li class="nav-item navbarPictures1">
             <a class="nav-link" href="#"><img src="images/searchWhite.png"></a>
@@ -65,79 +71,47 @@
     <div class="row firstSpacer"> </div>
 
     <div class="row">
-
-      <div class="col-2">
-        <div class="title"> Profile Settings </div>
-      </div>
-      <div class="col-10">
-        <div class="profileButtonGroup d-grid gap-5 d-md-block">
-          <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileBasicInfo.html';">Basic
-            Information</button>
-          <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileBillingInfo.html';">Billing
-            Information</button>
-          <button class="btn btn-colour-1 " type="button"
-            onclick="location.href = 'profileBillingHistory.html';">Billing History</button>
-          <button class="btn btn-colour-1" type="button" onclick="location.href = 'profileDateTime.html';">Date &
-            Time</button>
-          <button class="btn btn-colour-1 " type="button" onclick="location.href = 'profileChangePassword.html';">Change
-            Password</button>
-          <button class="btn btn-colour-1 active" type="button"
-            onclick="location.href = 'profileAlarmRecipients.html';">Alarm
-            Recipients</button>
-        </div>
+      <div class="col-3">
+        <div class="title"> Reports </div>
       </div>
     </div>
-
-    <div class="row firstSpacer"> </div>
 
 
     <div class="row">
 
-      <div class="col-8">
-        <table class="table table-hover gatewayTable shadow p-3">
+      <div class="col-10">
+        <table class="table table-hover gatewayTable shadow p-3" id = "reports-table">
           <thead>
             <tr>
-              <th scope="col" class="align-middle">Name</th>
-              <th scope="col" class="align-middle">Email</th>
-              <th scope="col" class="align-middle">Enable</th>
-              <th scope="col" class="align-middle">Operation</th>
-              <th scope="col"> <button type="submit" class="btn btn-outline active" class="align-middle">+ Alarm
-                  Recipient</button></th>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Enable</th>
+              <th scope="col">Operation</th>
+              <th scope="col"> </th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id = "table-body">
             <tr>
-              <td scope="row" class="align-middle"> Sample Name </td>
-              <td class="align-middle"> sampleEmail@gmail.com</td>
-              <td class="align-middle">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked">
-                </div>
-              </td>
-              <td class="align-middle"> </td>
-              <td class="align-middle"><img class="trash" src="images/trash.png"></td>
-            </tr>
-
-            <tr>
-              <td scope="row" class="align-middle"> Sample Name </td>
-              <td class="align-middle"> sampleEmail@gmail.com</td>
-              <td class="align-middle">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault" checked>
-                </div>
-              </td>
-              <td class="align-middle"> </td>
-              <td class="align-middle"><img class="trash" src="images/trash.png"></td>
+              <th scope="row" class="align-middle"> </th>
+              <td class="align-middle"></td>
+              <td class="align-middle">You do not have any reports.</td>
+              <td class="align-middle"></td>
+              <td class="align-middle"></td>
             </tr>
 
           </tbody>
         </table>
       </div>
+      <div class="col-1"> </div>
+    </div>
+    </div>
 
 
+    <div class="col-1"> </div>
+    </div>
   </section>
 
- 
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
