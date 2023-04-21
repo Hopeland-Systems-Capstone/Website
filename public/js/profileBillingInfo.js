@@ -45,12 +45,11 @@ function add_row(jsonText){
 
     // --- Status --- 
     let status = document.createElement("td");
-    status.setAttribute("scope","row");
     status.className = "align-middle";
     let dot = document.createElement("span");
     let text2 = document.createElement("span");
 
-    if(obj.status === "Online"){
+    if(obj.status === "Active"){ // double check
         dot.className = "dot2";
         text2.innerText = " Active";
     }

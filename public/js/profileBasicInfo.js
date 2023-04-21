@@ -43,6 +43,9 @@ function load_profile(){
 
 function save_profile(){
 
+    //PUT: /users/:user_id/update?name=name&email=email&phone_number=phone_number&company_name=company_name&key=val	
+    // Update user's user_id name, email, phone number, company name
+
     console.log("in save profile");
 
     let form = document.getElementById("profile");
@@ -55,28 +58,7 @@ function save_profile(){
     let phoneNumber = form.firstName.value;
 
     //if email is valid
-    if(email){
-        //call post to email
-
-    }else{
-        alert("Missing input in required section");
-        error_message();
-        return;
-    } 
-
-    if(lastName){
-        //call post to last name
-
-    }else{
-        alert("Missing input in required section");
-        error_message();
-        return;
-    } 
-
-    if(firstName){
-        //call post to first name
-
-    }else{
+    if(!email || !lastName || !firstName){
         alert("Missing input in required section");
         error_message();
         return;
