@@ -17,6 +17,16 @@ function load_profile(){
     // get email
     // restful call /users/:user_id/email?key=val
 
+    //GET
+    /*
+    const userAction = async () => {
+        const response = await fetch('');
+        const myJson = await response.json(); //extract JSON from the http response
+        // do something with myJson
+    }
+    //*/
+
+
     // get last name
     // restful call
 
