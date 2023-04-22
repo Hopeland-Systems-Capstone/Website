@@ -16,7 +16,7 @@ function add_row(jsonText){
 
     const obj = JSON.parse(jsonText);
 
-    let table = document.getElementById("table_body");
+    let table = document.getElementById("table-body");
     let row = document.createElement("tr");
 
     // --- Name ---
