@@ -14,7 +14,7 @@ async function get_profile(){
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
     
     //Create the query to get a user's email (in the backend README)
-    query = '/users/:user_id?key=9178ea6e1bfb55f9a26edbb1f292e82d';
+    query = '/users/:user_id?';
 
     //Pass the query and user's token into the /data route
     const response = await fetch('/data', {

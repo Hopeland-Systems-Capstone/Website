@@ -1,7 +1,7 @@
 
 // --- Needs Testing ---
 
-function update(){
+async function update(){
     //called on page load from listener
     console.log("This is called on page load.");
     load_sensor();
@@ -10,10 +10,12 @@ function update(){
 async function get_sensors(){
     //GET	/users/:user_id/sensors?key=val	
     //Return all sensors a user with user_id has access to
-    
+
+    console.log("in get_sensors");
+
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 
-    query = '/users/:user_id/sensors?key=9178ea6e1bfb55f9a26edbb1f292e82d';
+    query = '/users/:user_id/sensors?';
 
     //Pass the query and user's token into the /data route
     const response = await fetch('/data', {
@@ -27,8 +29,9 @@ async function get_sensors(){
     return await response.json();
 }
 
-function load_sensor(){
+async function load_sensor(){
 
+    console.log("in load_sensors");
     // temp data
     /*
     let givenJson = 
@@ -36,7 +39,7 @@ function load_sensor(){
         {"_id":"63785425c97a925662a44651", "sensor_id":3, "name": "sensor2", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [20.8],"humidity": [45],"co2": [400],"pressure": [1019]}]; 
     //*/
 
-    let givenJson = get_sensors();
+    let givenJson = await get_sensors();
     
     console.log("reached here " + givenJson.length);
     resetTable();
