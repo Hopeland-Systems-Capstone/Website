@@ -15,7 +15,7 @@ async function get_sensors(){
 
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 
-    query = '/users/:user_id/sensors?';
+    query = '/users/:user_id/sensors';
 
     //Pass the query and user's token into the /data route
     const response = await fetch('/data', {
@@ -49,10 +49,9 @@ async function load_sensor(){
         //if no sensors found, something is wrong and call ...
         console.log("found empty");
         emptyRow();
-    }
-    else{
+    } else {
         console.log("found and trying to fill");
-        for(i = 0; i < givenJson.length; i++){
+        for(i = 0; i < givenJson.length; i++) {
             let obj = givenJson[i];
             let jsonText = JSON.stringify(obj);
             //add row for each new data 
@@ -82,7 +81,7 @@ function emptyRow(){
     let error = document.createElement("td");
     error.setAttribute("scope","row");
     error.className = "align-middle";
-    error.innerText = "There was an issue gathering sensor data";
+    error.innerText = "No sensors found";
 
     let last_update = document.createElement("td");
     last_update.className = "align-middle";
