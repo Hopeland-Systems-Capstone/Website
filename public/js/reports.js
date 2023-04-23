@@ -9,20 +9,14 @@ function update(){
 
 function load_reports(){
 
-    //restful call to alerts
-
-    //get user id from token
-
-    //user alerts from id
-
-    //loop
-
+    // temp data
+    /*
     let givenJson = [{"_id": "636868574012fc7d47bfebaf","alert_id": 0,"title": "New Alert","alert": "This is a test alert","time": 1667786839503,"associated_sensor": 0}];
+    //*/
 
     resetTable();
 
     //loop through json
-    //createRow(tempJson);
     if(givenJson.length <= 0){
         //if no alerts found, something is wrong and call ...
         emptyRow();

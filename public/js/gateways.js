@@ -7,17 +7,18 @@ function update(){
 }
 
 function load_gateways(){
-    // would pull up all sensors? or specific ones? (for gateways page)
 
-    //make restful call
-
-    // below is temp data
+    // temp data
+    /*
     const givenJson = 
         [{"_id":"63785425c97a925662a44651", "sensor_id":0, "name": "sensor1", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [26.8],"humidity": [45],"co2": [400],"pressure": [1019]}]; 
+    //*/
+    
+    let givenJson = [];
 
     resetTable();
 
-    if(givenJson.length <= 0){
+    if(givenJson.length <= 0 || givenJson == null || givenJson.length == undefined){
         //if no sensors found, something is wrong and call ...
         emptyRow();
     }
@@ -139,4 +140,40 @@ function search_sensors(){
         }
     }
 
+}
+
+function emptyRow(){
+
+    let table = document.getElementById("table-body");// remember to give table an id
+    let row = document.createElement("tr");
+
+    let online = document.createElement("th");
+    online.setAttribute("scope","row");
+    online.className = "align-middle";
+
+    let device_name = document.createElement("td");
+    device_name.className = "align-middle";
+
+    // error message (goes in associated devices section)
+    let error = document.createElement("td");
+    error.className = "align-middle";
+    error.innerText = "There was an issue gathering sensor data";
+
+    let last_update = document.createElement("td");
+    last_update.className = "align-middle";
+
+    let graph = document.createElement("td");
+    graph.className = "align-middle";
+    let image2 = document.createElement("img");
+    image2.src = "images/iIcon.png";
+
+    graph.appendChild(image2);
+
+    row.appendChild(online);
+    row.appendChild(device_name);
+    row.appendChild(error);
+    row.appendChild(last_update);
+    row.appendChild(graph);
+
+    table.appendChild(row);
 }

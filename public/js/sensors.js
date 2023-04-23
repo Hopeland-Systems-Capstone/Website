@@ -1,40 +1,53 @@
 
+// --- Needs Testing ---
 
 function update(){
     //called on page load from listener
     console.log("This is called on page load.");
-
     load_sensor();
+}
 
+async function get_sensors(){
+    //GET	/users/:user_id/sensors?key=val	
+    //Return all sensors a user with user_id has access to
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+
+    query = '/users/:user_id/sensors?key=9178ea6e1bfb55f9a26edbb1f292e82d';
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    return await response.json();
 }
 
 function load_sensor(){
-    // would we want to use js to pull up all sensors?
 
-    //make restful call
-    //call which? would need names of sensor
-
-    //get user id from token
-
-    //user sensor from id
-
-    //loop
-
-    // below is temp data
+    // temp data
+    /*
     let givenJson = 
         [{"_id":"63785425c97a925662a44651", "sensor_id":0, "name": "sensor1", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [26.8],"humidity": [45],"co2": [400],"pressure": [1019]},
         {"_id":"63785425c97a925662a44651", "sensor_id":3, "name": "sensor2", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [20.8],"humidity": [45],"co2": [400],"pressure": [1019]}]; 
+    //*/
 
-    //givenJson = [];    
-
+    let givenJson = get_sensors();
+    
+    console.log("reached here " + givenJson.length);
     resetTable();
 
     // loop thru and generate row as needed.
-    if(givenJson.length <= 0){
+    if(givenJson.length <= 0 || givenJson == null || givenJson.length == undefined){
         //if no sensors found, something is wrong and call ...
+        console.log("found empty");
         emptyRow();
     }
     else{
+        console.log("found and trying to fill");
         for(i = 0; i < givenJson.length; i++){
             let obj = givenJson[i];
             let jsonText = JSON.stringify(obj);
@@ -218,7 +231,7 @@ function createRow(jsonText){
     image1.src = "images/smallGraph.png";
     let image2 = document.createElement("img");
     image2.src = "images/iIcon.png";
-    // Probably will need to add links to images
+    // Links are currently not attached
 
     graph.appendChild(image1);
     graph.appendChild(image2);
