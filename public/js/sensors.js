@@ -10,13 +10,14 @@ function update(){
 async function get_sensors(){
     //GET	/users/:user_id/sensors?key=val	
     //Return all sensors a user with user_id has access to
+    
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 
     query = '/users/:user_id/sensors?key=9178ea6e1bfb55f9a26edbb1f292e82d';
 
     //Pass the query and user's token into the /data route
     const response = await fetch('/data', {
-        method: 'POST',
+        method: 'POST', 
         headers: {
             'Content-Type': 'application/json'
         },

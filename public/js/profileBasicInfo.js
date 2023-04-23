@@ -1,44 +1,56 @@
 
 function update(){
     console.log("page load");
-
-    //called when you load page
-
     load_profile();
     clear_message();
 }
 
-function get_profile(){
+async function get_profile(){
+
+    // GET	/users/:user_id?key=val	
+    // Return user information given user_id
+
+    //Get's the user's token from their browser
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+    
+    //Create the query to get a user's email (in the backend README)
+    query = '/users/:user_id?key=9178ea6e1bfb55f9a26edbb1f292e82d';
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    //Return the response from the /data route, which should be the email of the user
+    return await response.json();
 
 }
 
 function load_profile(){
+    const givenJson = get_profile();
+    let profile = JSON.parse(givenJson);
 
-    // get email
-    // restful call /users/:user_id/email?key=val
+    let form = document.getElementById("profile");
 
-    //GET
-    /*
-    const userAction = async () => {
-        const response = await fetch('');
-        const myJson = await response.json(); //extract JSON from the http response
-        // do something with myJson
+    let email = document.getElementById("email");
+    let last_name = document.getElementById("lastName");
+    let first_name = document.getElementById("firstName");
+    let company = document.getElementById("companyName");
+    let phone = document.getElementById("phoneNumber");
+
+    let full_name = profile.name.split(" ",2);
+
+    email.value = profile.email;
+    first_name.value = full_name[0];
+    if(!(full_name[1] == undefined)){
+       last_name.value = full_name[1]; 
     }
-    //*/
-
-
-    // get last name
-    // restful call
-
-    // get first Name
-    // restful call
-
-    // get company
-    // restful call
-
-    // get phone num
-    // restful call
-
+    company.value = profile.company_name;
+    phone.value = profile.phoneNumber;
 }
 
 function save_profile(){

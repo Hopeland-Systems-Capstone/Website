@@ -13,6 +13,7 @@ function load_reports(){
     /*
     let givenJson = [{"_id": "636868574012fc7d47bfebaf","alert_id": 0,"title": "New Alert","alert": "This is a test alert","time": 1667786839503,"associated_sensor": 0}];
     //*/
+    let givenJson = [];
 
     resetTable();
 
