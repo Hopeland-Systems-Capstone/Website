@@ -1,5 +1,5 @@
 
-function update(){
+async function update(){
     console.log("page load");
     load_profile();
     clear_message();
@@ -14,7 +14,7 @@ async function get_profile(){
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
     
     //Create the query to get a user's email (in the backend README)
-    query = '/users/:user_id?';
+    query = '/users/:user_id';
 
     //Pass the query and user's token into the /data route
     const response = await fetch('/data', {
@@ -30,8 +30,8 @@ async function get_profile(){
 
 }
 
-function load_profile(){
-    const givenJson = get_profile();
+async function load_profile(){
+    const givenJson = await get_profile();
     let profile = JSON.parse(givenJson);
 
     let form = document.getElementById("profile");
