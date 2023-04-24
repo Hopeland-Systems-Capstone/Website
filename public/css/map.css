@@ -69,7 +69,6 @@ html, body {
 
 .title{
   margin-top: 25px;
-  margin-left: 45px;
   font-size: 25px;
   font-weight: 700;
 }
@@ -219,7 +218,6 @@ html, body {
 }
 
 .sensorKey{
-  margin-left: 45px;
   margin-top: 40px;
 }
 
@@ -251,10 +249,9 @@ html, body {
 }
 
 #map {
-  margin-left: 45px;
   margin-top: 20px;
   height: 100%;
-  min-height: 200px;
+  min-height: 500px;
   border-radius: 10px;
 }
 
@@ -303,4 +300,33 @@ html, body {
 .device-detail {
   color: gray;
   font-size: smaller;
+}
+
+.bodyArea {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+@media (max-width:990px) {
+  .table-responsive-sm {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .center-sm {
+    text-align: center;
+  }
+
+  .no-margin-sm {
+    margin-left: 0px;
+  }
+
+  .navbar-center-pic-sm {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

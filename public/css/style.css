@@ -78,9 +78,7 @@ body {
 }
 
 .barometricPressure {
-  /*height: 370px;*/
-  height: auto;
-  width: auto;
+  height: 370px;
   max-width: 550px;
   font-size: 18px;
   font-weight: 600;
@@ -94,9 +92,7 @@ body {
 }
 
 .temperature {
-  /*height: 370px;*/
-  height: auto;
-  width: auto;
+  height: 370px;
   max-width: 550px;
   font-size: 18px;
   font-weight: 600;
@@ -110,9 +106,7 @@ body {
 }
 
 .co2level {
-  /*height: 370px;*/
-  height: auto;
-  width: auto;
+  height: 370px;
   max-width: 550px;
   font-size: 18px;
   font-weight: 600;
@@ -126,9 +120,7 @@ body {
 }
 
 .humidity {
-  /*height: 370px;*/
-  height: auto;
-  width: auto;
+  height: 370px;
   max-width: 550px;
   font-size: 18px;
   font-weight: 600;
@@ -142,9 +134,7 @@ body {
 }
 
 .waterLevel {
-  /*height: 370px;*/
-  height: auto;
-  width: auto;
+  height: 370px;
   max-width: 550px;
   font-size: 18px;
   font-weight: 600;
@@ -182,7 +172,6 @@ body {
 }
 
 .measurements {
-  margin-left: 30px;
   display: inline;
   font-size: 14px;
 }
@@ -222,4 +211,26 @@ body {
 
   height: 230px;
   margin-top: 30px;
+}
+
+.bodyArea {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+@media (max-width:990px) {
+  .center-sm {
+    text-align: center;
+  }
+
+  .no-margin-sm {
+    margin-left: 0px;
+  }
+
+  .navbar-center-pic-sm {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

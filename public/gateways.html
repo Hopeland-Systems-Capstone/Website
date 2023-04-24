@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
+  <meta name="viewport" content="width=device-width initial-scale=1">
   <title>Gateways</title>
   <link href="css/gateways.css" rel="stylesheet" type="text/css" />
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -19,9 +19,9 @@
 
 <body>
   <script src="js/gateways.js"></script>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
     <div class="container-fluid">
-      <a class="navbar-brand" href="main.html">
+      <a class="navbar-brand" href="index.html">
         <img src="images/mainLogo.png" class="mainLogo">
       </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -29,29 +29,31 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item navbarItems1">
-            <a class="nav-link" href="main.html">Dashboard</a>
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+          <li class="nav-item center-sm no-margin-sm navbarItems1">
+            <a class="nav-link" href="index.html">Dashboard</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link active" href="gateways.html">Gateways</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="sensors.html">Sensors</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="map.html">Map</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="reports.html">Reports</a>
           </li>
-          <li class="nav-item navbarPictures1">
+        </ul>
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0" style="margin-left: auto;">
+          <li class="nav-item navbar-center-pic-sm navbarPictures">
             <a class="nav-link" href="#"><img src="images/searchWhite.png"></a>
           </li>
-          <li class="nav-item navbarPictures">
+          <li class="nav-item navbar-center-pic-sm navbarPictures">
             <a class="nav-link" href="#"><img src="images/bellWhite.png"></a>
           </li>
-          <li class="nav-item navbarPictures">
+          <li class="nav-item navbar-center-pic-sm navbarPictures">
             <a class="nav-link" href="profileBasicInfo.html"><img src="images/avatarWhite.png"></a>
           </li>
         </ul>
@@ -59,75 +61,79 @@
     </div>
   </nav>
 
-  <section class="bodyArea">
+  <section class="continer-fluid bodyArea">
 
     <div class="row firstSpacer"> </div>
 
     <div class="row">
-      <div class="col-2">
+      <div class="col-8 col-md-2">
         <div class="title"> Gateways Status </div>
       </div>
-      <div class="col-2">
-        <input type="search" id = "search" onkeyup = "search_sensors()" class="form-control searchDevice" placeholder="Search Devices">
+      <div class="col-11 col-md-3">
+        <input type="search" id="search" onkeyup="search_sensors()" class="form-control searchDevice"
+          placeholder="Search Devices">
       </div>
-      <div class="col-1">
+      <div class="col col-lg-1">
         <div class="descriptors"> Online - 4 </div>
       </div>
-      <div class="col-1">
+      <div class="col col-lg-1">
         <div class="descriptors"> Offline - 1 </div>
       </div>
-      <div class="col-1">
+      <div class="col col-lg-1">
         <div class="descriptors"> Inactive - 0 </div>
       </div>
     </div>
 
     <div class="row">
 
-      <div class="col-10">
-        <table id = "gateways-table" class="table table-hover gatewayTable shadow p-3">
-          <thead>
-            <tr>
-              <th scope="col">Status</th>
-              <th scope="col">Device Name</th>
-              <th scope="col">Associated Devices (Joined / NotJoined / Failed)</th>
-              <th scope="col">Last Update</th>
-              <th scope="col"> </th>
-            </tr>
-          </thead>
-          <tbody id = "table-body">
-            <tr>
-              <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
-              <td class="align-middle">
-                <div>VS121-DEMO</div>
-                <div>6600C3163121</div>
-              </td>
-              <td class="align-middle">Joined</td>
-              <td class="align-middle">6 minutes ago</td>
-              <td class="align-middle"><img src="images/iIcon.png"></img></td>
-            </tr>
-            <tr>
-              <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
-              <td class="align-middle">
-                <div>VS121-DEMO</div>
-                <div>6600C3163121</div>
-              </td>
-              <td class="align-middle">Joined</td>
-              <td class="align-middle">6 minutes ago</td>
-              <td class="align-middle"><img src="images/iIcon.png"></img></td>
-            </tr>
-            <tr>
-              <th scope="row" class="align-middle"> <span class="dot3"></span> Offline</th>
-              <td class="align-middle">
-                <div>VS121-DEMO</div>
-                <div>6600C3163121</div>
-              </td>
-              <td class="align-middle">Joined</td>
-              <td class="align-middle">6 minutes ago</td>
-              <td class="align-middle"><img src="images/iIcon.png"></img></td>
-            </tr>
+      <div class="col-12">
+        <div class="table-responsive-sm">
+          <table id="gateways-table" class="table table-hover gatewayTable shadow p-3">
+            <thead>
+              <tr>
+                <th scope="col">Status</th>
+                <th scope="col">Device Name</th>
+                <th scope="col">Associated Devices (Joined / NotJoined / Failed)</th>
+                <th scope="col">Last Update</th>
+                <th scope="col"> </th>
+              </tr>
+            </thead>
+            <tbody id="table-body">
+              <tr>
+                <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
+                <td class="align-middle">
+                  <div>VS121-DEMO</div>
+                  <div>6600C3163121</div>
+                </td>
+                <td class="align-middle">Joined</td>
+                <td class="align-middle">6 minutes ago</td>
+                <td class="align-middle"><img src="images/iIcon.png"></img></td>
+              </tr>
+              <tr>
+                <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
+                <td class="align-middle">
+                  <div>VS121-DEMO</div>
+                  <div>6600C3163121</div>
+                </td>
+                <td class="align-middle">Joined</td>
+                <td class="align-middle">6 minutes ago</td>
+                <td class="align-middle"><img src="images/iIcon.png"></img></td>
+              </tr>
+              <tr>
+                <th scope="row" class="align-middle"> <span class="dot3"></span> Offline</th>
+                <td class="align-middle">
+                  <div>VS121-DEMO</div>
+                  <div>6600C3163121</div>
+                </td>
+                <td class="align-middle">Joined</td>
+                <td class="align-middle">6 minutes ago</td>
+                <td class="align-middle"><img src="images/iIcon.png"></img></td>
+              </tr>
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
+
       </div>
       <div class="col-1"> </div>
     </div>
