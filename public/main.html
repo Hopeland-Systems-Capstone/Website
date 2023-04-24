@@ -31,30 +31,30 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav me-auto mb-2 mb-sm-0">
-          <li class="nav-item navbarItems1">
+          <li class="nav-item center-sm no-margin-sm navbarItems1">
             <a class="nav-link active" href="index.html">Dashboard</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="gateways.html">Gateways</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="sensors.html">Sensors</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="map.html">Map</a>
           </li>
-          <li class="nav-item navbarItems">
+          <li class="nav-item center-sm navbarItems">
             <a class="nav-link" href="reports.html">Reports</a>
           </li>
         </ul>
         <ul class="navbar-nav me-auto mb-2 mb-sm-0" style="margin-left: auto;">
-          <li class="nav-item navbarPictures">
+          <li class="nav-item navbar-center-pic-sm navbarPictures">
             <a class="nav-link" href="#"><img src="images/searchWhite.png"></a>
           </li>
-          <li class="nav-item navbarPictures">
+          <li class="nav-item navbar-center-pic-sm navbarPictures">
             <a class="nav-link" href="#"><img src="images/bellWhite.png"></a>
           </li>
-          <li class="nav-item navbarPictures">
+          <li class="nav-item navbar-center-pic-sm navbarPictures">
             <a class="nav-link" href="profileBasicInfo.html"><img src="images/avatarWhite.png"></a>
           </li>
         </ul>
@@ -64,48 +64,94 @@
 
   <section class="bodyArea">
 
-    <div class="title"> Overview </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col">
+        <div class="title"> Overview </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
+
     <div class="row firstSpacer"> </div>
 
-    <div class="container d-flex justify-content-center align-items-center" style="margin-left: auto; margin-right: auto;">
-      <div class="row">
-        <div class="col-lg-6 shadow p-3 barometricPressure" style="max-width: 600px; width: auto;">
-          <div class="container barometricTitle"> Barometric Pressure <div class="measurements"> <span
-                class="dot1"></span> High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          </div>
-          <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 0.9">
-        </div>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col">
 
-        <div class="col-lg-6 shadow p-3 temperature" style="max-width: 600px; width: auto;">
-          <div class="container temperatureTitle"> Temperature <div class="measurements"> <span class="dot1"></span>
-              High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          </div>
-          <img src="images/temperatureGraph.png" class="img-fluid temperatureGraph" style="scale: 0.9">
-        </div>
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-12 col-lg-5 shadow p-3 barometricPressure">
+              <div class="container barometricTitle"> Barometric Pressure <div class="measurements"> <span
+                    class="dot1"></span> High <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
+              </div>
+              <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 90%;">
+            </div>
 
-        <div class="col-lg-6 shadow p-3 co2level" style="max-width: 600px; width: auto;">
-          <div class="container co2levelTitle"> CO2 Level <div class="measurements"> <span class="dot1"></span> High
-              <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          </div>
-          <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 0.9">
-        </div>
+            <div class="col-12 col-lg-5 shadow p-3 temperature">
+              <div class="container temperatureTitle"> Temperature </div>
+              <div class="row">
+                <div class="col-9">
+                  <img src="images/temperatureGraph.png" class="img-fluid temperatureGraph" style="scale:90%;">
+                </div>
+                <div class="col">
+                  <div class="row">
+                    <div class="measurements"> <span class="dot1"></span> High </div>
+                  </div>
+                  <div class="row">
+                    <div class="measurements"> <span class="dot2"></span> Average </div>
+                  </div>
+                  <div class="row">
+                    <div class="measurements"> <span class="dot3"></span> Low </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
-        <div class="col-lg-6 shadow p-3 humidity" style="max-width: 600px; width: auto;">
-          <div class="container humidityTitle"> Humidity <div class="measurements"> <span class="dot1"></span> High
-              <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          </div>
-          <img src="images/temperatureGraph.png" class="img-fluid temperatureGraph" style="scale: 0.9">
-        </div>
+            <div class="col-12 col-lg-5 shadow p-3 co2level">
+              <div class="container co2levelTitle"> CO2 Level <div class="measurements"> <span class="dot1"></span> High
+                  <span class="dot2"></span> Average <span class="dot3"></span> Low
+                </div>
+              </div>
+              <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale:90%;">
+            </div>
 
-        <div class="col-lg-6 shadow p-3 waterLevel" style="max-width: 600px; width: auto;">
-          <div class="container waterLevelTitle"> Water Level <div class="measurements"> <span class="dot1"></span> High
-              <span class="dot2"></span> Average <span class="dot3"></span> Low </div>
-          </div>
-          <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale: 0.9">
-        </div>
+            <div class="col-12 col-lg-5 shadow p-3 humidity">
+              <div class="container humidityTitle"> Humidity </div>
+              <div class="row">
+                <div class="col-9">
+                  <img src="images/temperatureGraph.png" class="img-fluid temperatureGraph" style="scale:90%;">
+                </div>
+                <div class="col">
+                  <div class="row">
+                    <div class="measurements"> <span class="dot1"></span> High </div>
+                  </div>
+                  <div class="row">
+                    <div class="measurements"> <span class="dot2"></span> Average </div>
+                  </div>
+                  <div class="row">
+                    <div class="measurements"> <span class="dot3"></span> Low </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
+
+            <div class="col-12 col-lg-5 shadow p-3 waterLevel">
+              <div class="container waterLevelTitle"> Water Level <div class="measurements"> <span class="dot1"></span>
+                  High
+                  <span class="dot2"></span> Average <span class="dot3"></span> Low
+                </div>
+              </div>
+              <img src="images/pressureGraph.png" class="img-fluid pressureGraph" style="scale:90%;">
+            </div>
+
+          </div>
+        </div>
       </div>
-    </div>
+
+
+      <div class="col-1"></div>
+
   </section>
 
   <script src="https://replit.com/public/js/replit-badge.js" theme="blue" defer></script>
