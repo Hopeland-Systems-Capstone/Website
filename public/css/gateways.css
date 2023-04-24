@@ -69,14 +69,12 @@ html, body {
 
 .title{
   margin-top: 25px;
-  margin-left: 45px;
   font-size: 25px;
   font-weight: 700;
 }
 
 .descriptors{
   margin-top: 35px;
-  margin-left: 30px;
 }
 
 .searchDevice{
@@ -213,7 +211,35 @@ html, body {
 }
 
 .gatewayTable{
-  margin-left: 45px;
   margin-top: 40px;
   border: 2px solid black;
+}
+
+.bodyArea{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 45px;
+  padding-right: 45px;
+}
+
+@media (max-width:990px){
+  .table-responsive-sm {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .center-sm{
+    text-align: center;
+  }
+
+  .no-margin-sm{
+    margin-left: 0px;
+  }
+
+  .navbar-center-pic-sm{
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
