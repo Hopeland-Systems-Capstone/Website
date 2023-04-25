@@ -5,10 +5,49 @@ function update(){
     load_billing();
 }
 
-function load_billing(){
+async function get_cards(){
+    // GET	/users/:user_id/cards?key=val	
+    // Get all cards on file for a user
+
+    //Get's the user's token from their browser
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+    
+    //Create the query to get a user's email (in the backend README)
+    query = '/users/:user_id/cards';
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    //Return the response from the /data route, which should be the email of the user
+    return await response.json();
+}
+
+async function load_billing(){
 
     //get restful call to load billing
+    const givenJson = await get_cards();
 
+    resetTable();
+
+    if(givenJson.length <= 0 || givenJson == null || givenJson.length == undefined){
+        //if no cards found
+        console.log("found empty");
+        emptyRow();
+    } else {
+        console.log("found and trying to fill");
+        for(i = 0; i < givenJson.length; i++) {
+            let obj = givenJson[i];
+            let jsonText = JSON.stringify(obj);
+            //add row for each new data 
+            add_row(jsonText);
+        }
+    }
 
 }
 
@@ -33,7 +72,7 @@ function add_row(jsonText){
     let type = "Visa Card ";
 
     let text1 = document.createElement("span")
-    text.innerText = type + card;
+    text1.innerText = type + card;
 
     name.appendChild(image1);
     name.appendChild(text1);
@@ -72,6 +111,45 @@ function add_row(jsonText){
     image2.className = "trash";
 
     icon.appendChild(image2);
+
+    row.appendChild(name);
+    row.appendChild(expiration);
+    row.appendChild(status);
+    row.appendChild(icon);
+
+    table.appendChild(row);
+}
+
+function resetTable(){
+    let tempTable = document.getElementById("table-body");
+    tempTable.innerHTML = null; 
+}
+
+function emptyRow(){
+    
+    let table = document.getElementById("table-body");
+    let row = document.createElement("tr");
+
+    // --- Name ---
+    let name = document.createElement("td");
+    name.setAttribute("scope","row");
+    name.className = "align-middle";
+    let text = document.createElement("span")
+    text.innerText = "No billing information found";
+
+    name.appendChild(text);
+    
+    // --- Expiration --- 
+    let expiration = document.createElement("td");
+    expiration.className = "align-middle";
+
+    // --- Status --- 
+    let status = document.createElement("td");
+    status.className = "align-middle";
+
+    // --- Trash ---
+    let icon = document.createElement("td");
+    icon.className = "align-middle";
 
     row.appendChild(name);
     row.appendChild(expiration);

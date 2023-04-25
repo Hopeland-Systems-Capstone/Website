@@ -6,7 +6,6 @@ async function update(){
 }
 
 async function get_profile(){
-
     // GET	/users/:user_id?key=val	
     // Return user information given user_id
 
@@ -27,12 +26,15 @@ async function get_profile(){
 
     //Return the response from the /data route, which should be the email of the user
     return await response.json();
-
 }
 
 async function load_profile(){
+    console.log("in load profile");
+    
     const givenJson = await get_profile();
-    let profile = JSON.parse(givenJson);
+    let givenJson1 = JSON.stringify(givenJson);
+    console.log("after get" + givenJson1);
+    let profile = JSON.parse(givenJson1);
 
     let form = document.getElementById("profile");
 
@@ -43,31 +45,36 @@ async function load_profile(){
     let phone = document.getElementById("phoneNumber");
 
     let full_name = profile.name.split(" ",2);
-
-    email.value = profile.email;
+    console.log("test " + full_name[0] + full_name[1]);
+    
+    email.value = profile.email; // working
     first_name.value = full_name[0];
-    if(!(full_name[1] == undefined)){
+    if(!(full_name[1] == undefined || full_name[1] == null)){
        last_name.value = full_name[1]; 
     }
     company.value = profile.company_name;
-    phone.value = profile.phoneNumber;
+    phone.value = profile.phone_number;
 }
 
-function save_profile(){
+async function save_profile(){
+    let hold = await update_profile();
+}
 
-    //PUT: /users/:user_id/update?name=name&email=email&phone_number=phone_number&company_name=company_name&key=val	
+async function update_profile(){
+    // PUT: /users/:user_id/update?name=name&email=email&phone_number=phone_number&company_name=company_name&key=val	
     // Update user's user_id name, email, phone number, company name
 
     console.log("in save profile");
 
     let form = document.getElementById("profile");
 
-    //find values given
-    let email = form.email.value;
-    let lastName = form.lastName.value;
-    let firstName = form.firstName.value;
-    let companyName = form.companyName.value;
-    let phoneNumber = form.firstName.value;
+    let email = document.getElementById("email").value;
+    let lastName = document.getElementById("lastName").value;
+    let firstName = document.getElementById("firstName").value;
+    let companyName = document.getElementById("companyName").value;
+    let phoneNumber = document.getElementById("phoneNumber").value;
+
+    let fullName = firstName + lastName;
 
     //if email is valid
     if(!email || !lastName || !firstName){
@@ -78,18 +85,36 @@ function save_profile(){
 
     //if company name was given
     if(companyName){ // should check for illegal characters
-        //post email
-        //restful call
+
     }
 
-    if(phoneNumber){ // check for only nums
-
-    }else{
+    let isnum = /^\d+$/.test(phoneNumber);
+    if(!(phoneNumber && isnum)){ 
         alert("Incorrect characters in Phone Number");
         error_message();
         return;
     }
 
+    // ---- restful call below ---
+    /*
+    //Get's the user's token from their browser
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+
+    //Create the query to get a user's email (in the backend README)
+    query = '/users/:user_id/update?name=' + fullName +'&email=' + email+ '&phone_number=' + phoneNumber + '&company_name=' + companyName;
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    //Return the response from the /data route, which should be the email of the user
+    return await response.json();
+    */
 }
 
 function error_message(){

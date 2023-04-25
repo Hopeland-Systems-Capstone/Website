@@ -8,10 +8,8 @@ async function update(){
 }
 
 async function get_sensors(){
-    //GET	/users/:user_id/sensors?key=val	
-    //Return all sensors a user with user_id has access to
-
-    console.log("in get_sensors");
+    // GET	/sensors/:sensor_id?key=val	
+    //Returns all sensors with id of sensor_id
 
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 
@@ -29,15 +27,30 @@ async function get_sensors(){
     return await response.json();
 }
 
+async function get_sensor_info(sensor_id){
+
+    console.log("in get_sensor_info");
+
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+
+    query = '/sensors/' + sensor_id;
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    return await response.json();
+
+}
+
 async function load_sensor(){
 
     console.log("in load_sensors");
-    // temp data
-    /*
-    let givenJson = 
-        [{"_id":"63785425c97a925662a44651", "sensor_id":0, "name": "sensor1", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [26.8],"humidity": [45],"co2": [400],"pressure": [1019]},
-        {"_id":"63785425c97a925662a44651", "sensor_id":3, "name": "sensor2", "status":"Online","last_update":1668896333401,"geolocation":{"type": "Point","coordinates": [0,0]},"battery": [{"time": 1668896333401,"value": 100}],"temperature": [20.8],"humidity": [45],"co2": [400],"pressure": [1019]}]; 
-    //*/
 
     let givenJson = await get_sensors();
     
@@ -50,12 +63,17 @@ async function load_sensor(){
         console.log("found empty");
         emptyRow();
     } else {
-        console.log("found and trying to fill");
+        console.log("found and filling");
         for(i = 0; i < givenJson.length; i++) {
             let obj = givenJson[i];
-            let jsonText = JSON.stringify(obj);
+            //let jsonText = JSON.stringify(obj);
+
+            let sensor_info = await get_sensor_info(obj);
+            sensor_info = JSON.stringify(sensor_info);
+            console.log(i + " " + sensor_info);
+
             //add row for each new data 
-            createRow(jsonText);
+            createRow(sensor_info);
         }
     }
 }
@@ -134,9 +152,9 @@ function createRow(jsonText){
     let device_name = document.createElement("td");
     device_name.className = "align-middle";
     let name = document.createElement("div");
-    name.innerText = obj.name;                  // grabbing JSON obj.name 
+    name.innerText = obj.name;                  
     let id = document.createElement("div");
-    id.innerText = obj.sensor_id;               // grabbing JSON obj.sensor_id 
+    id.innerText = obj.sensor_id;               
 
     device_name.appendChild(name);
     device_name.appendChild(id);
@@ -154,7 +172,8 @@ function createRow(jsonText){
     let c1_value = document.createElement("div");
     c1_value.className = "row";
     c1_value.style = "font-weight: bold";
-    c1_value.innerText = obj.co2 + " ppm";        // grabbing JSON obj.co2
+    let co2 = obj.co2[obj.co2.length-1].value;
+    c1_value.innerText = Math.trunc(co2) + "ppm  ";        
     let c1_name = document.createElement("div");
     c1_name.className = "row";
     c1_name.style = "font-size: 12px";
@@ -171,11 +190,12 @@ function createRow(jsonText){
     let c2_value = document.createElement("div");
     c2_value.className = "row";
     c2_value.style = "font-weight: bold";
-    c2_value.innerText = obj.temperature + "C";     // grabbing JSON obj.temperature 
+    let temp = obj.temperature[obj.temperature.length-1].value;
+    c2_value.innerText = Math.trunc(temp) + "C";
     let c2_name = document.createElement("div");
     c2_name.className = "row";
     c2_name.style = "font-size: 12px";
-    c2_name.innerText = "Temperature";
+    c2_name.innerText = "Temperature ";
 
     c2.appendChild(c2_value);
     c2.appendChild(c2_name);
@@ -188,7 +208,8 @@ function createRow(jsonText){
     let c3_value = document.createElement("div");
     c3_value.className = "row";
     c3_value.style = "font-weight: bold";
-    c3_value.innerText = obj.humidity + "%";          // grabbing JSON obj.humidity 
+    let humidity = obj.humidity[obj.humidity.length-1].value;
+    c3_value.innerText = Math.trunc(humidity) + "%";  
     let c3_name = document.createElement("div");
     c3_name.className = "row";
     c3_name.style = "font-size: 12px";
@@ -205,7 +226,8 @@ function createRow(jsonText){
     let c4_value = document.createElement("div");
     c4_value.className = "row";
     c4_value.style = "font-weight: bold";
-    c4_value.innerText = obj.pressure + "hPa";          // grabbing JSON obj.pressure 
+    let pressure = obj.pressure[obj.pressure.length-1].value;
+    c4_value.innerText = Math.trunc(pressure) + "hPa";          // grabbing JSON obj.pressure 
     let c4_name = document.createElement("div");
     c4_name.className = "row";
     c4_name.style = "font-size: 12px";
