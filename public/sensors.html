@@ -22,7 +22,6 @@
   <script>
     window.onload = function () {
       update();
-      load_sensor();
     };
   </script>
 
@@ -102,43 +101,29 @@
 
     <div class="row">
 
-      <div class="col-12">
-        <div class="table-responsive-sm">
-          <table class="table table-hover gatewayTable shadow p-3" id="sensors-table" style="overflow-x:auto; min-width:800px;">
-            <thead>
-              <tr>
-                <th scope="col">Status</th>
-                <th scope="col">Device Name</th>
-                <th scope="col">Interface Status</th>
-                <th scope="col">Last Update</th>
-                <th scope="col"> </th>
-              </tr>
-            </thead>
-            <tbody id="table-body">
-              <tr>
-                <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
-                <td class="align-middle">
-                  <div>VS121-DEMO</div>
-                  <div>6600C3163121</div>
-                </td>
-                <td class="align-middle">
-                  <div class="row">
-                    <div class="col-2">
-                      <div class="row" style="font-weight: bold"> 431 ppm</div>
-                      <div class="row" style="font-size: 12px"> CO2 </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="row" style="font-weight: bold"> 26.8C</div>
-                      <div class="row" style="font-size: 12px"> Temperature </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="row" style="font-weight: bold"> 45%</div>
-                      <div class="row" style="font-size: 12px"> Humidity </div>
-                    </div>
-                    <div class="col-2">
-                      <div class="row" style="font-weight: bold"> 1019hPa</div>
-                      <div class="row" style="font-size: 12px"> Barometric Pressure </div>
-                    </div>
+      <div class="col-10">
+        <table class="table table-hover gatewayTable shadow p-3" id="sensors-table">
+          <thead>
+            <tr>
+              <th scope="col">Status</th>
+              <th scope="col">Device Name</th>
+              <th scope="col">Interface Status</th>
+              <th scope="col">Last Update</th>
+              <th scope="col"> </th>
+            </tr>
+          </thead>
+          <tbody id = "table-body">
+            <!--<tr>
+              <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
+              <td class="align-middle">
+                <div>VS121-DEMO</div>
+                <div>6600C3163121</div>
+              </td>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 431 ppm</div>
+                    <div class="row" style="font-size: 12px"> CO2 </div>
                   </div>
                 </td>
                 <td class="align-middle">6 minutes ago</td>
@@ -200,15 +185,73 @@
                       <div class="row" style="font-size: 12px"> Barometric Pressure </div>
                     </div>
                   </div>
-                </td>
-                <td class="align-middle">6 minutes ago</td>
-                <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 1019hPa</div>
+                    <div class="row" style="font-size: 12px"> Barometric Pressure </div>
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">6 minutes ago</td>
+              <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img></td>
+            </tr>
+            <tr>
+              <th scope="row" class="align-middle"> <span class="dot2"></span> Online</th>
+              <td class="align-middle">
+                <div>VS121-DEMO</div>
+                <div>6600C3163121</div>
+              </td>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 431 ppm</div>
+                    <div class="row" style="font-size: 12px"> CO2 </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 26.8C</div>
+                    <div class="row" style="font-size: 12px"> Temperature </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 45%</div>
+                    <div class="row" style="font-size: 12px"> Humidity </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 1019hPa</div>
+                    <div class="row" style="font-size: 12px"> Barometric Pressure </div>
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">6 minutes ago</td>
+              <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img></td>
+            </tr>
+            <tr>
+              <th scope="row" class="align-middle"> <span class="dot3"></span> Offline</th>
+              <td class="align-middle">
+                <div>VS121-DEMO</div>
+                <div>6600C3163121</div>
+              </td>
+              <td class="align-middle">
+                <div class="row">
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 431 ppm</div>
+                    <div class="row" style="font-size: 12px"> CO2 </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 26.8C</div>
+                    <div class="row" style="font-size: 12px"> Temperature </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 45%</div>
+                    <div class="row" style="font-size: 12px"> Humidity </div>
+                  </div>
+                  <div class="col-2">
+                    <div class="row" style="font-weight: bold"> 1019hPa</div>
+                    <div class="row" style="font-size: 12px"> Barometric Pressure </div>
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">6 minutes ago</td>
+              <td class="align-middle"> <img src="images/smallGraph.png"></img> <img src="images/iIcon.png"></img> </td>
+            </tr>-->
 
       </div>
       <div class="col-1"> </div>

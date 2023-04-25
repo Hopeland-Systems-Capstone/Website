@@ -6,7 +6,7 @@ const token_api = require('../api/token_api');
 
 router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-  
+
     const user_id = await auth_api.getUserIdByEmail(email);
 
     if (user_id === -2 || user_id === -1) {

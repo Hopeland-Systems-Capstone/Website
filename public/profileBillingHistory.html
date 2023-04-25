@@ -19,6 +19,12 @@
 
 <body>
   <script src="js/profileBillingHistory.js"></script>
+  <script>
+    window.onload = function()
+    {
+      update();
+    };
+  </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
     <div class="container-fluid">
@@ -104,7 +110,7 @@
               <th scope="col" class="align-middle">Amount</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id = "table-body">
             <tr>
               <td scope="row" class="align-middle">Invoice #007 - 12/2022</td>
               <td class="align-middle"> 12/01/2022

@@ -19,6 +19,12 @@
 
 <body>
   <script src="js/profileDateTime.js"></script>
+  <script>
+    window.onload = function()
+    {
+      update();
+    };
+  </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
     <div class="container-fluid">
@@ -98,7 +104,7 @@
         <form>
           <div class="form-group">
             <label for="exampleInputEmail1" class=" infoTitle">Current Time:</label>
-            <div class="time" style="font-weight:600 ;"> 2022-11-07 06:32:01 Monday </div>
+            <div id = "current_time" class="time" style="font-weight:600 ;"> 2022-11-07 06:32:01 Monday </div>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1" class=" infoTitle">Time Zone:</label>

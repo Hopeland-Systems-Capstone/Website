@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 async function generateToken() {
     const token = new Uint8Array(32);
     crypto.getRandomValues(token);

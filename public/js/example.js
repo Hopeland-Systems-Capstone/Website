@@ -13,7 +13,7 @@ async function getUserEmail() {
   const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
   
   //Create the query to get a user's email (in the backend README)
-  query = `/users/:user_id/email`
+  query = '/users/:user_id/email';
 
   //Pass the query and user's token into the /data route
   const response = await fetch('/data', {
