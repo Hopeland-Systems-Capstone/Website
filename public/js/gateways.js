@@ -157,7 +157,7 @@ function emptyRow(){
     // error message (goes in associated devices section)
     let error = document.createElement("td");
     error.className = "align-middle";
-    error.innerText = "There was an issue gathering sensor data";
+    error.innerText = "No gateways found";
 
     let last_update = document.createElement("td");
     last_update.className = "align-middle";
