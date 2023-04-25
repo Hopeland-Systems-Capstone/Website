@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 
 const cookie_api = require('./cookie_api');
+global.crypto = require('crypto');
 
 async function checkLoggedIn(req, res) {
 
