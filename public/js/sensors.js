@@ -50,6 +50,13 @@ async function get_sensor_info(sensor_id){
 
 async function load_sensor(){
 
+    var forest = 0;
+    var flood = 0;
+    var alarm = 0;
+    var online = 0;
+    var offline = 0;
+    var inactive = 0;
+
     console.log("in load_sensors");
 
     let givenJson = await get_sensors();
@@ -72,10 +79,33 @@ async function load_sensor(){
             sensor_info = JSON.stringify(sensor_info);
             console.log(i + " " + sensor_info);
 
+            const json = JSON.parse(sensor_info);
+            if (json.status === "Online") {
+                online++;
+            } else if (json.status === "Offline") {
+                offline++;
+            } else if (json.status === "Inactive") {
+                inactive++;
+            }
+            if (json.type === "Forest") {
+                forest++;
+            } else if (json.type === "Flood") {
+                flood++;
+            } else if (json.type === "Alarm") {
+                alarm++;
+            }
+            document.querySelector(".online").textContent = `Online - ${online}`;
+            document.querySelector(".offline").textContent = `Offline - ${offline}`;
+            document.querySelector(".inactive").textContent = `Inactive - ${inactive}`;
+            document.querySelector(".forest").textContent = `Forest - ${forest}`;
+            document.querySelector(".flood").textContent = `Flood - ${flood}`;
+            document.querySelector(".alarm").textContent = `Alarm - ${alarm}`;
+
             //add row for each new data 
             createRow(sensor_info);
         }
     }
+
 }
 
 function resetTable(){
