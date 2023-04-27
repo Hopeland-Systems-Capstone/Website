@@ -57,7 +57,19 @@ async function load_profile(){
 }
 
 async function save_profile(){
+
+    const button = document.getElementById('save-button');
+    button.classList.add('loading');
+
     let hold = await update_profile();
+
+    button.classList.remove('loading');
+    //save_message();
+
+    if (hold != null) {
+        alert("Saved Profile");
+        save_message();
+    }
 }
 
 async function update_profile(){
@@ -74,7 +86,7 @@ async function update_profile(){
     let companyName = document.getElementById("companyName").value;
     let phoneNumber = document.getElementById("phoneNumber").value;
 
-    let fullName = firstName + lastName;
+    let fullName = firstName + " " + lastName;
 
     //if email is valid
     if(!email || !lastName || !firstName){
@@ -95,8 +107,6 @@ async function update_profile(){
         return;
     }
 
-    // ---- restful call below ---
-    /*
     //Get's the user's token from their browser
     const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 
@@ -104,7 +114,7 @@ async function update_profile(){
     query = '/users/:user_id/update?name=' + fullName +'&email=' + email+ '&phone_number=' + phoneNumber + '&company_name=' + companyName;
 
     //Pass the query and user's token into the /data route
-    const response = await fetch('/data', {
+    const response = await fetch('/data/put', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -114,7 +124,6 @@ async function update_profile(){
 
     //Return the response from the /data route, which should be the email of the user
     return await response.json();
-    */
 }
 
 function error_message(){
@@ -125,6 +134,7 @@ function error_message(){
 function save_message(){
     let element = document.getElementById("message");
     element.innerText = "Saved"
+    element.style.color = "#536942";
 }
 
 function clear_message(){

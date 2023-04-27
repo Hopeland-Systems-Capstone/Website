@@ -326,3 +326,34 @@ html, body {
     margin-right: auto;
   }
 }
+
+button.loading {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.8;
+  pointer-events: none;
+  position: relative;
+}
+
+button.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50%);
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  border-top-color: transparent;
+  border-radius: 50%;
+  width: 16px;
+  height: 16px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
