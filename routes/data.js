@@ -45,7 +45,7 @@ router.post('/data/put', async (req, res) => {
     console.log(`Response of ${jsonResponse}`)
 
     //Returns the response of the requested query
-    res.status(200).json(jsonResponse);
+    res.status(response.status).json(jsonResponse);
 });
 
 router.post('/data/post', async (req, res) => {
@@ -68,7 +68,7 @@ router.post('/data/post', async (req, res) => {
     console.log(`Response of ${jsonResponse}`)
 
     //Returns the response of the requested query
-    res.status(200).json(jsonResponse);
+    res.status(response.status).json(jsonResponse);
 });
 
 router.post('/data/delete', async (req, res) => {
@@ -91,7 +91,7 @@ router.post('/data/delete', async (req, res) => {
     console.log(`Response of ${jsonResponse}`)
 
     //Returns the response of the requested query
-    res.status(200).json(jsonResponse);
+    res.status(response.status).json(jsonResponse);
 });
 
 module.exports = router;

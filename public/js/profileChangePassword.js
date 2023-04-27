@@ -5,16 +5,15 @@ function update(){
 //needs to be tested
 async function update_password(){
 
-    let old_pass = document.getElementById("old_password").value;
-    let new_pass = document.getElementById("new_password").value;
-    let confirmation = document.getElementById("confirmation").value;
+    let old_pass = await hashPassword(document.getElementById("old_password").value);
+    let new_pass = await hashPassword(document.getElementById("new_password").value);
+    let confirmation = await hashPassword(document.getElementById("confirmation").value);
 
     if(!old_pass || !new_pass || !confirmation){
-        alert();
+        alert("Enter old password, new password, and confirmation.");
         error_message();
         return;
-    }
-    else if(!(new_pass === confirmation)){
+    } else if(new_pass !== confirmation) {
         alert("New Password does not match Confirm New Password")
         error_message();
         return;
@@ -25,21 +24,32 @@ async function update_password(){
 
     // PUT: /users/:user_id/password?key=val&new=new_password&old=old_password	
     // Update password for user
-    query = '/users/:user_id/password?key=9178ea6e1bfb55f9a26edbb1f292e82d&new='
-            + new_pass + '&old=' + old_pass;
+    console.log(new_pass);
+    console.log(old_pass);
+    query = '/users/:user_id/password?new=' + new_pass + '&old=' + old_pass;
 
     //Pass the query and user's token into the /data route
-    const response = await fetch('/data', {
-        method: 'PUT', //or post
+    const response = await fetch('/data/put', {
+        method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({ token, query })
     });
-    
-    save_message();
-    //Return the response from the /data route, which should be the email of the user
-    return await response.json();
+
+    console.log(response.status);
+
+    if (response.status === 201) {
+        save_message();
+    } else {
+        wrongPassword();
+    }
+}
+
+function wrongPassword() {
+    alert("Wrong Password. Try again.")
+    let element = document.getElementById("message");
+    element.innerText = "Wrong Password"
 }
 
 function error_message(){
@@ -48,11 +58,21 @@ function error_message(){
 }
 
 function save_message(){
+    alert("Updated password!")
     let element = document.getElementById("message");
     element.innerText = "Updated"
+    element.style.color = "#536942";
+    document.getElementById("old_password").value="";
+    document.getElementById("new_password").value="";
+    document.getElementById("confirmation").value="";
 }
 
 function clear_message(){
     let element = document.getElementById("message");
     element.innerText = ""
+}
+
+async function hashPassword(password) {
+    const hash = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(password));
+    return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
 }
