@@ -72,7 +72,18 @@ const initialize = async () => {
         var sid;
         for (sid = 0; sid < 2; sid++) {
 
-          const response = await fetch(`http://localhost:3000/sensors/${sid}/readings?dataType=${datatype}&timeStart=${timeStart}&timeEnd=${timeEnd}&key=9178ea6e1bfb55f9a26edbb1f292e82d`);
+          const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+          
+          query = `/sensors/${sid}/readings?dataType=${datatype}&timeStart=${timeStart}&timeEnd=${timeEnd}`
+
+          const response = await fetch('/data', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ token, query })
+          });
+
           const data = await response.json();
           //console.log(data);
           intervalData = intervalData.concat(data);
