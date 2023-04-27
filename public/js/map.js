@@ -15,7 +15,19 @@ const initialize = async () => {
   //calculate distance in meters from center of map to corner of map
   var range = Math.sqrt(latRange * latRange + longRange * longRange)
 
-  const response = await fetch(`http://localhost:3000/sensors?key=9178ea6e1bfb55f9a26edbb1f292e82d&longitude=${center.lng}&latitude=${center.lat}&distance=${range}`);
+  const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+  
+  query = `/sensors?longitude=${center.lng}&latitude=${center.lat}&distance=${range}`
+
+  //Pass the query and user's token into the /data route
+  const response = await fetch('/data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ token, query })
+  });
+  
   const sensors = await response.json();
 
   sensors.forEach(async sensor => {
@@ -141,6 +153,7 @@ var forestOnlineIcon = new DeviceIcon({iconUrl: './images/map/forest-online.png'
 
 
 function markerMouseOverGenerate(sensor) {
+  const battery = Math.round(sensor.battery.at(-1)?.value ?? 100);
   const co2 = Math.round(sensor.co2.at(-1).value);
   const temperature = Math.round(sensor.temperature.at(-1).value*100)/100;
   const humidity = Math.round(sensor.humidity.at(-1).value*10)/10;
@@ -153,27 +166,12 @@ function markerMouseOverGenerate(sensor) {
       </div>
       <div class='markerHoverBoxDeviceInfo'>
         <div class='markerHoverBoxDeviceStatus'>
-          <b>Interface Status</b><br>
-          CO2: <span class="device-detail">${co2} ppm</span><br>
+          <b>Data</b><br>
+          Battery: <span class="device-detail">${battery}%</span><br>
           Temperature: <span class="device-detail">${temperature}C </span><br>
+          CO2: <span class="device-detail">${co2} ppm</span><br>
           Humidity: <span class="device-detail">${humidity}%</span><br>
           Barometric Pressure: <span class="device-detail">${pressure} hPa</span><br>
-        </div>
-        <div class='markerHoverBoxDeviceDetails'>
-          <b>Device Information</b><br>
-          RSSI: <span class="device-detail">-63 dBm</span><br>
-          SNR: <span class="device-detail">14 dB</span><br>
-          SN: <span class="device-detail">178FJWO9SKLL8</span><br>
-          SF: <span class="device-detail">7</span><br>
-          Battery: <span class="device-detail">100%</span><br>
-          Model: <span class="device-detail">WS101</span><br>
-          IMEI: <span class="device-detail">-</span><br>
-          Firmware: <span class="device-detail">-</span><br>
-          Group Name: <span class="device-detail">-</span><br>
-          Hardware: <span class="device-detail">-</span><br>
-          Device ID: <span class="device-detail">-</span><br>
-          Associated Gateway: <span class="device-detail">-</span><br>
-          Device EUI: <span class="device-detail">-</span><br>
         </div>
       </div>
     </div>`
