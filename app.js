@@ -26,23 +26,39 @@ const routeMap = {
     '/profileAlarmRecipients.html': '/alarm-recipients'
 };
 
+const ignoredSubstrings = ['/images', '/js', '/css', 'favicon.ico'];
+
 async function authMiddleware(req, res, next) {
-    if (req.path.endsWith('.html')) {
-        try {
-            await auth_api.checkLoggedIn(req, res);
-            // Remove the .html extension from the URL
+    console.log(req.path);
+    const shouldIgnore = ignoredSubstrings.some(substr => req.path.includes(substr));
+    if (shouldIgnore) {
+        const url = routeMap[req.path];
+        if (url) {
+            res.redirect(url);
+        } else {
+            next();
+        }
+    } else {
+        const loggedIn = await auth_api.checkLoggedIn(req, res);
+        if (loggedIn) {
             const url = routeMap[req.path];
             if (url) {
                 res.redirect(url);
             } else {
-                console.log("NOO URL FOUNDDD url");
                 next();
             }
-        } catch (err) {
-            res.redirect(err.message);
+        } else {
+            if (req.path !== "/login") {
+                res.redirect("/login");
+            } else {
+                const url = routeMap[req.path];
+                if (url) {
+                    res.redirect(url);
+                } else {
+                    next();
+                }
+            }
         }
-    } else {
-        next();
     }
 }
 

@@ -14,18 +14,14 @@ async function checkLoggedIn(req, res) {
         if (user_id === null || user_id == -1) {
             console.log("Token resulted in invalid user. Logging out.");
             cookie_api.setCookie(res, 'token', '', { maxAge: 0, path: '/' });
-            if (!req.originalUrl.endsWith('index.html')) {
-                throw new Error('/index.html');
-            }
+            return false;
         }
 
-        if (req.originalUrl.endsWith('index.html')) {
-            throw new Error('/main.html');
-        }
+        return true;
 
-    } else if (!req.originalUrl.endsWith('index.html')) {
+    } else {
         console.log("Not logged in");
-        throw new Error('/index.html');
+        return false;
     }
 }
 
