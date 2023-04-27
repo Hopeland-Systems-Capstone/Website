@@ -141,3 +141,11 @@ function clear_message(){
     let element = document.getElementById("message");
     element.innerText = ""
 }
+
+async function logout(){
+    const button = document.getElementById('logout-button');
+    button.classList.add('loading');
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.href = "/login";
+    button.classList.remove('loading');
+}
