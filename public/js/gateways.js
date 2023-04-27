@@ -150,6 +150,8 @@ function emptyRow(){
     let online = document.createElement("th");
     online.setAttribute("scope","row");
     online.className = "align-middle";
+    online.innerText = "No gateways found";
+    online.style.fontWeight = "normal";
 
     let device_name = document.createElement("td");
     device_name.className = "align-middle";
@@ -157,7 +159,6 @@ function emptyRow(){
     // error message (goes in associated devices section)
     let error = document.createElement("td");
     error.className = "align-middle";
-    error.innerText = "No gateways found";
 
     let last_update = document.createElement("td");
     last_update.className = "align-middle";

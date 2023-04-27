@@ -121,6 +121,8 @@ function emptyRow(){
     let online = document.createElement("th");
     online.setAttribute("scope","row");
     online.className = "align-middle";
+    online.innerText = "No sensors found";
+    online.style.fontWeight = "normal";
 
     let device_name = document.createElement("td");
     device_name.className = "align-middle";
@@ -129,7 +131,6 @@ function emptyRow(){
     let error = document.createElement("td");
     error.setAttribute("scope","row");
     error.className = "align-middle";
-    error.innerText = "No sensors found";
 
     let last_update = document.createElement("td");
     last_update.className = "align-middle";

@@ -120,7 +120,7 @@ function emptyRow(){
     let name = document.createElement("td");
     name.setAttribute("scope","row");
     name.className = "align-middle";
-    name.innerText = "No Recipiants Found"; // get name
+    name.innerText = "No Recipients Found"; // get name
 
     //email
     let email = document.createElement("td");

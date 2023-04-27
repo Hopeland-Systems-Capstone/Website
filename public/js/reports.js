@@ -79,6 +79,8 @@ async function emptyRow(){
     // id section
     let id = document.createElement("th")
     id.className = "align-middle";
+    id.innerText = "No reports found.";
+    id.style.fontWeight = "normal";
     id.setAttribute("scope","row");
 
     // sensor section
@@ -92,7 +94,6 @@ async function emptyRow(){
     // alert
     let alert = document.createElement("td");
     alert.className = "align-middle";
-    alert.innerText = "No reports found.";
 
     //end
     let end = document.createElement("td");
