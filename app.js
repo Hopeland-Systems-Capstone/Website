@@ -42,7 +42,9 @@ async function authMiddleware(req, res, next) {
         const loggedIn = await auth_api.checkLoggedIn(req, res);
         if (loggedIn) {
             const url = routeMap[req.path];
-            if (url) {
+            if (req.path === '/' || req.path === '/login' || req.path === '/index.html') {
+                res.redirect('/dashboard');
+            } else if (url) {
                 res.redirect(url);
             } else {
                 next();
