@@ -1,23 +1,10 @@
 var map = L.map('map').setView([33.5, -112.5], 9);
 
 const initialize = async () => {
-  //get width and height of map in degrees of longitude and latitude
-  var width = map.getBounds().getEast() - map.getBounds().getWest()+0.5;
-  var height = map.getBounds().getNorth() - map.getBounds().getSouth()+0.5;
-  var center = map.getCenter();
-
-  const METERS_IN_ONE_DEGREE = 111111;
-
-  //calculate distance in meters from center of map to edge of map in each direction
-  var latRange = Math.abs(METERS_IN_ONE_DEGREE*height/2);
-  var longRange = Math.abs(METERS_IN_ONE_DEGREE*Math.cos(center.lat)*width/2);
-
-  //calculate distance in meters from center of map to corner of map
-  var range = Math.sqrt(latRange * latRange + longRange * longRange)
 
   const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
   
-  query = `/sensors?longitude=${center.lng}&latitude=${center.lat}&distance=${range}`
+  query = `/users/:user_id/sensors`
 
   //Pass the query and user's token into the /data route
   const response = await fetch('/data', {
@@ -31,7 +18,18 @@ const initialize = async () => {
   const sensors = await response.json();
 
   sensors.forEach(async sensor => {
-    createMarker(sensor);
+  
+    query = `/sensors/${sensor}`
+    
+    const response = await fetch('/data', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ token, query })
+    });
+
+    createMarker(await response.json());
   });
 }
 
