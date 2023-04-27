@@ -4,19 +4,20 @@ function update(){
     //called on page load from listener
     console.log("This is called on page load.");
 
-    // use this to call other functions as needed
+    load_reports();
 }
 
 function load_reports(){
 
-    //restful call to alerts
-
+    // temp data
+    /*
     let givenJson = [{"_id": "636868574012fc7d47bfebaf","alert_id": 0,"title": "New Alert","alert": "This is a test alert","time": 1667786839503,"associated_sensor": 0}];
+    //*/
+    let givenJson = [];
 
     resetTable();
 
     //loop through json
-    //createRow(tempJson);
     if(givenJson.length <= 0){
         //if no alerts found, something is wrong and call ...
         emptyRow();
@@ -76,7 +77,7 @@ function createRow(alertText){
     
     // Note: organize by time
 
-    // id = _id or alert_id
+    // id = alert_id
     // title = title 
     // Enable = alert 
     // Operation = time

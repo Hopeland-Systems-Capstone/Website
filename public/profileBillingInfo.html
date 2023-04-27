@@ -19,6 +19,12 @@
 
 <body>
   <script src="js/profileBillingInfo.js"></script>
+  <script>
+    window.onload = function()
+    {
+      update();
+    };
+  </script>
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light shadow p-3" aria-label="Hopeland Systems">
     <div class="container-fluid">
@@ -108,7 +114,8 @@
                   Card</button></th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id = "table-body">
+            <!--
             <tr>
               <td scope="row" class="align-middle"> <img src="images/visaLogo.png"> Visa Card **** 1234</td>
               <td class="align-middle"> 12/2022
@@ -129,6 +136,7 @@
                 </button></td>
               <td class="align-middle"><img class="trash" src="images/trash.png"></td>
             </tr>
+          -->
           </tbody>
         </table>
       </div>
