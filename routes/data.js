@@ -15,7 +15,7 @@ router.post('/data', async (req, res) => {
     console.log(`Found user_id ${user_id}`)
 
     //Executes the GET query requested from the frontend
-    const response = await fetch(`http://localhost:3000${query.replace(":user_id", user_id)}?key=9178ea6e1bfb55f9a26edbb1f292e82d`);
+    const response = await fetch(`http://localhost:3000${query.replace(":user_id", user_id)}${query.includes("?") ? "&" : "?"}key=9178ea6e1bfb55f9a26edbb1f292e82d`);
 
     const jsonResponse = await response.json();
 
