@@ -5,6 +5,10 @@ body {
   font-family: 'Merriweather Sans';
 }
 
+.navbar {
+  z-index: 1; 
+}
+
 .mainLogo {
   width: 200px;
   height: auto;
@@ -232,5 +236,55 @@ body {
   .navbar-center-pic-sm {
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  transition: opactiy 0.75s, visibility 0.75s;
+  z-index: 0; 
+}
+
+.loader-hidden{
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loader::before {
+  content: "Loading Graphs";
+  display: inline-block;
+  margin-right: 10px;
+  margin-bottom: 8px;
+  font-size: 30px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.loader::after{
+  content:"";
+  display: inline-block;
+  width: 75px;
+  height: 75px;
+  border: 15px solid #F8F9FA;
+  border-top-color: #536942;
+  border-radius: 50%;
+  animation: loading 0.75s ease infinite;
+  position: relative;
+}
+
+@keyframes loading {
+  from{
+    transform: rotate(0turn);
+  }
+  to{
+    transform: rotate(1turn);
   }
 }

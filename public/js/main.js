@@ -43,7 +43,6 @@ const initialize = async () => {
 
   const timeIntervals = getTimestamps();
   const dataTypes = ['pressure','co2','humidity','temperature']
-  const chartTypes = ['bar','bar','line','line']
 
 
   /**
@@ -98,96 +97,60 @@ const initialize = async () => {
 
       }
 
-      if (datatype === 'pressure' || datatype === 'co2') {
-        new Chart(document.getElementById(`${datatype}chart`), {
-          type: 'bar',
-          data: {
-            labels: timeIntervals.labels,
-            datasets: [{
-              label: 'high',
-              data: datatypeData.highs,
-              borderWidth: 1,
-              backgroundColor: '#F28C0C'
-            },{
-              label: 'average',
-              data: datatypeData.averages,
-              borderWidth: 1,
-              backgroundColor: '#84C642'
-            },{
-              label: 'low',
-              data: datatypeData.lows,
-              borderWidth: 1,
-              backgroundColor: '#B0C6CE'
-            }]
-          },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: false
-              }
-            },
-            plugins: {
-              legend: {
-                display: false
-              }
-            }
-          }
-        });
-      }
+      const loader = document.querySelector(".loader");
+      loader.classList.add("loader-hidden");
 
-      else if (datatype === 'humidity' || datatype === 'temperature') {
-        new Chart(document.getElementById(`${datatype}chart`), {
-          type: 'line',
-          data: {
-            labels: timeIntervals.labels,
-            datasets: [{
-              label: 'high',
-              data: datatypeData.highs,
-              borderWidth: 1,
-              backgroundColor: '#F28C0C',
-              pointBackgroundColor: '#F28C0C',
-              pointRadius: 1,
-              borderColor: '#F28C0C',
-              borderWidth: 3
-            },{
-              label: 'average',
-              data: datatypeData.averages,
-              borderWidth: 1,
-              backgroundColor: '#84C642',
-              pointBackgroundColor: '#84C642',
-              pointRadius: 1,
-              borderColor: '#84C642',
-              borderWidth: 3
-            },{
-              label: 'low',
-              data: datatypeData.lows,
-              borderWidth: 1,
-              backgroundColor: '#B0C6CE',
-              pointBackgroundColor: '#B0C6CE',
-              pointRadius: 1,
-              borderColor: '#B0C6CE',
-              borderWidth: 3
-            }]
+      new Chart(document.getElementById(`${datatype}chart`), {
+        type: 'line',
+        data: {
+          labels: timeIntervals.labels,
+          datasets: [{
+            label: 'high',
+            data: datatypeData.highs,
+            borderWidth: 1,
+            backgroundColor: '#F28C0C',
+            pointBackgroundColor: '#F28C0C',
+            pointRadius: 1,
+            borderColor: '#F28C0C',
+            borderWidth: 3
+          },{
+            label: 'average',
+            data: datatypeData.averages,
+            borderWidth: 1,
+            backgroundColor: '#84C642',
+            pointBackgroundColor: '#84C642',
+            pointRadius: 1,
+            borderColor: '#84C642',
+            borderWidth: 3
+          },{
+            label: 'low',
+            data: datatypeData.lows,
+            borderWidth: 1,
+            backgroundColor: '#B0C6CE',
+            pointBackgroundColor: '#B0C6CE',
+            pointRadius: 1,
+            borderColor: '#B0C6CE',
+            borderWidth: 3
+          }]
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: (datatype === 'pressure' ? false : true)
+            }
           },
-          options: {
-            scales: {
-              y: {
-                beginAtZero: false
-              }
-            },
-            plugins: {
-              legend: {
-                display: false
-              }
+          plugins: {
+            legend: {
+              display: false
             }
           }
-        });
-      }
+        }
+      });
     });
   }
 
   await createCharts();
-  
+  /*
   const waterLevelBarChartCtx = document.getElementById('waterlevelchart');
   new Chart(waterLevelBarChartCtx, {
     type: 'bar',
@@ -223,7 +186,7 @@ const initialize = async () => {
       }
     }
   });
-
+  */
   
 }
 
