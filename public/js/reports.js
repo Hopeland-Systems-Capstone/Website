@@ -1,44 +1,79 @@
 // (much of this code can double in alerts.js)
 
-function update(){
+async function update(){
     //called on page load from listener
     console.log("This is called on page load.");
-
-    load_reports();
+    load_alert();
 }
 
-function load_reports(){
+async function get_alerts() {
+    // GET	/user/:user_id/alerts	
+    //Returns all alerts from user
 
-    // temp data
-    /*
-    let givenJson = [{"_id": "636868574012fc7d47bfebaf","alert_id": 0,"title": "New Alert","alert": "This is a test alert","time": 1667786839503,"associated_sensor": 0}];
-    //*/
-    let givenJson = [];
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
 
+    query = '/users/:user_id/alerts';
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    return await response.json();
+}
+
+async function get_alert_info(alert_id){
+
+    console.log("in get_alert_info");
+
+    const token = document.cookie.split('; ').find(row => row.startsWith('token=')).split('=')[1];
+
+    query = '/alerts/' + alert_id;
+
+    //Pass the query and user's token into the /data route
+    const response = await fetch('/data', {
+        method: 'POST', 
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ token, query })
+    });
+
+    return await response.json();
+
+}
+
+async function load_alert(){
+    let givenJson = await get_alerts();
     resetTable();
-
     //loop through json
     if(givenJson.length <= 0){
         //if no alerts found, something is wrong and call ...
         emptyRow();
-    }
-    else{
+    } else{
         for(i = 0; i < givenJson.length; i++){
             let obj = givenJson[i];
-            let jsonText = JSON.stringify(obj);
+            let alert_info = await get_alert_info(obj);
+
+            console.log(alert_info);
+
+            alert_info = JSON.stringify(alert_info);
             //add row for each new data 
-            createRow(jsonText);
+            createRow(alert_info);
         }
     }
-
 }
 
-function resetTable(){
+async function resetTable(){
     let tempTable = document.getElementById("table-body");
     tempTable.innerHTML = null; 
 }
 
-function emptyRow(){
+async function emptyRow(){
     let table = document.getElementById("table-body");// remember to give table an id
     let row = document.createElement("tr");
     // id section
@@ -46,18 +81,18 @@ function emptyRow(){
     id.className = "align-middle";
     id.setAttribute("scope","row");
 
+    // sensor section
+    let sensor = document.createElement("th")
+    sensor.className = "align-middle";
+
     // title section
     let title = document.createElement("td");
     title.className = "align-middle";
 
-    // enabled
-    let enable = document.createElement("td");
-    enable.className = "align-middle";
-    enable.innerText = "You do not have any reports.";
-
-    // Operation
-    let operation = document.createElement("td");
-    operation.className = "align-middle";
+    // alert
+    let alert = document.createElement("td");
+    alert.className = "align-middle";
+    alert.innerText = "No reports found.";
 
     //end
     let end = document.createElement("td");
@@ -65,15 +100,15 @@ function emptyRow(){
 
     // Connecting new elements
     row.appendChild(id);
+    row.appendChild(sensor);
     row.appendChild(title);
-    row.appendChild(enable);
-    row.appendChild(operation);
+    row.appendChild(alert);
     row.appendChild(end);
 
     table.appendChild(row);
 }
 
-function createRow(alertText){
+async function createRow(alertText){
     
     // Note: organize by time
 
@@ -93,20 +128,20 @@ function createRow(alertText){
     id.className = "align-middle";
     id.setAttribute("scope","row");
 
+    // sensor 
+    let sensor = document.createElement("td");
+    sensor.innerText = obj.associated_sensor;
+    sensor.className = "align-middle";
+
     // title 
     let title = document.createElement("td");
     title.innerText = obj.title;
     title.className = "align-middle";
 
-    // enabled
-    let enable = document.createElement("td");
-    enable.innerText = ""; // obj.description?
-    enable.className = "align-middle";
-
-    // Operation
-    let operation = document.createElement("td");
-    operation.innerText = ""; // obj.description?
-    operation.className = "align-middle";
+    // alert
+    let alert = document.createElement("td");
+    alert.innerText = obj.alert;
+    alert.className = "align-middle";
 
     //end
     let end = document.createElement("td");
@@ -114,9 +149,9 @@ function createRow(alertText){
 
     // Connecting new elements
     row.appendChild(id);
+    row.appendChild(sensor);
     row.appendChild(title);
-    row.appendChild(enable);
-    row.appendChild(operation);
+    row.appendChild(alert);
     row.appendChild(end);
 
     table.appendChild(row);
